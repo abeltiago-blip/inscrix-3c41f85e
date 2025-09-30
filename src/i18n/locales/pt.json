@@ -1,0 +1,373 @@
+{
+  "navigation": {
+    "home": "Início",
+    "events": "Eventos",
+    "about": "Sobre",
+    "contact": "Contactos",
+    "login": "Entrar",
+    "logout": "Sair",
+    "register": "Registar",
+    "dashboard": "Dashboard",
+    "cart": "Carrinho",
+    "profile": "Perfil",
+    "categorias": "O que Procuras?",
+    "localization": "Onde?",
+    "settings": "Settings"
+  },
+  "sidebar": {
+    "quickActions": {
+      "title": "Ações Rápidas",
+      "createEvent": {
+        "label": "Criar Evento",
+        "description": "Organiza o teu evento"
+      },
+      "cart": {
+        "label": "Carrinho",
+        "description": "Ver carrinho"
+      }
+    },
+    "explore": {
+      "title": "Explorar",
+      "events": {
+        "label": "Eventos",
+        "description": "Todos os eventos"
+      },
+      "categories": {
+        "label": "O que Procuras?",
+        "description": "Categorias de eventos"
+      },
+      "location": {
+        "label": "Onde?",
+        "description": "Localização"
+      },
+      "manual": {
+        "label": "Manual",
+        "description": "Guia da plataforma"
+      }
+    }
+  },
+    "settings": {
+    "setting": "Configurações",
+    "nmcompany": "INSCRIX",
+    "peventmanage": "Gestão de Eventos"
+    },
+  "common": {
+    "loading": "A carregar...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "view": "Ver",
+    "back": "Voltar",
+    "next": "Seguinte",
+    "previous": "Anterior",
+    "search": "Pesquisar",
+    "filter": "Filtrar",
+    "sort": "Ordenar",
+    "date": "Data",
+    "location": "Localização",
+    "category": "Categoria",
+    "price": "Preço",
+    "free": "Gratuito",
+    "language": "Idioma"
+  },
+  "login": {
+    "title": "Iniciar Sessão",
+    "subtitle": "Entre na tua conta Inscrix",
+    "emailLabel": "Email",
+    "emailPlaceholder": "seu.email@exemplo.com",
+    "passwordLabel": "Palavra-passe",
+    "passwordPlaceholder": "Digite a tua palavra-passe",
+    "submitButton": "Entrar",
+    "loadingButton": "A entrar...",
+    "forgotPassword": "Esqueceu a palavra-passe?",
+    "noAccount": "Não tem conta?",
+    "registerHere": "Registe-se aqui",
+    "errorTitle": "Erro no login",
+    "invalidCredentials": "Email ou palavra-passe incorretos.",
+    "genericError": "Erro ao fazer login. Tente novamente.",
+    "unexpectedError": "Erro inesperado. Tente novamente.",
+    "successTitle": "Login realizado com sucesso!",
+    "successDescription": "Bem-vindo à Inscrix"
+  },
+  "passwordReset": {
+    "title": "Recuperar Palavra-passe",
+    "description": "Introduza o seu email para receber instruções de recuperação.",
+    "emailSentTitle": "Email enviado!",
+    "emailSentDesc": "Verifique o seu email para redefinir a palavra-passe.",
+    "emailSentMessage": "Enviámos instruções para o teu email. Verifica a tua caixa de entrada.",
+    "resendButton": "Enviar novamente",
+    "emailPlaceholder": "O seu email",
+    "sending": "A enviar...",
+    "sendInstructions": "Enviar instruções",
+    "backToLogin": "Voltar ao login"
+  },
+  "common2": {
+    "error": "Erro",
+    "email": "Email"
+  },
+  "events": {
+    "title": "Eventos",
+    "featured": "Eventos em Destaque",
+    "upcoming": "Próximos Eventos",
+    "all": "Todos",
+    "sports": "Desporto",
+    "culture": "Cultura",
+    "recreational": "Lazer",
+    "educational": "Educação",
+    "addToCart": "Adicionar ao Carrinho",
+    "buyNow": "Comprar Já",
+    "register": "Inscrever",
+    "details": "Ver Detalhes",
+    "participants": "Participantes",
+    "soldOut": "Esgotado",
+    "registrationOpen": "Inscrições Abertas",
+    "registrationClosed": "Inscrições Encerradas",
+    "registrationSoon": "Inscrições em Breve",
+    "noEvents": "Nenhum evento encontrado",
+    "createEvent": "Criar Evento",
+    "loading": "Carregando...",
+    "noEventsTitle": "Ops! Não encontrámos eventos com esses filtros 😔",
+    "noEventsText": "Mas não te preocupes! Tenta ajustar os filtros ou criar o teu próprio evento incrível.",
+    "viewAll": "Ver Todos os Eventos",
+    "createMyEvent": "Criar o Meu Evento",
+    "paginationTitle": "Gostas do que vês? 🎉",
+    "paginationText": "Inscreve-te já ou cria o teu próprio evento!",
+    "backToTop": "Voltar ao Topo"
+  },
+  "eventsSection": {
+    "noSportEventsTitle": "Sem eventos desportivos com esses filtros",
+    "noSportEventsText": "Que tal organizares uma maratona, torneio de futebol ou volta de BTT?",
+    "createSportEventButton": "Criar Evento Desportivo",
+    "noCultureEventsTitle": "Sem eventos culturais com esses filtros",
+    "noCultureEventsText": "Que tal um festival de fado, workshop de gastronomia ou exposição de arte?",
+    "createCultureEventButton": "Criar Evento Cultural",
+    "viewAllEventsButton": "Ver Todos os Eventos",
+    "sportEventsTitle": "💪 Eventos Desportivos em Portugal",
+    "sportEventsText": "Desafia-te com maratonas, torneios e atividades ao ar livre. Mantém-te ativo e conhece pessoas incríveis!",
+    "createSportEvent": "🏆 Criar Evento Desportivo",
+    "cultureEventsTitle": "Eventos Culturais em Portugal",
+    "cultureEventsText": "Mergulha na rica cultura portuguesa. Desde fado tradicional a arte contemporânea e gastronomia única!",
+    "createCultureEvent": "Criar Evento Cultural",
+    "ctaTitle": "Não encontraste exactamente o que procuravas? 🤔",
+    "ctaBenefit1Title": "Rápido e Fácil",
+    "ctaBenefit1Text": "Cria o teu evento em poucos minutos com a nossa plataforma intuitiva.",
+    "ctaBenefit2Title": "Alcance Nacional",
+    "ctaBenefit2Text": "Chega a milhares de pessoas interessadas em todo o país.",
+    "ctaBenefit3Title": "Completamente Grátis",
+    "ctaBenefit3Text": "Sem custos escondidos. Cria, promove e gere o teu evento gratuitamente.",
+    "ctaCreateEvent": "Criar o Meu Evento Agora",
+    "ctaExploreCategories": "Explorar Mais Categorias",
+    "ctaStartHere": "Começa Aqui!"
+  },
+  "ctaText": {
+  "ctatextp1": "Não há problema! Cria o teu próprio evento único e partilha com milhares de pessoas apaixonadas. É",
+  "ctatextp2": "gratuito", 
+  "ctatextp3": "fácil",
+  "ctatextp4": "e podes começar já!"
+},
+
+
+  "cart": {
+    "title": "Carrinho de Compras",
+    "empty": "O seu carrinho está vazio",
+    "items": "itens",
+    "item": "item",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "checkout": "Finalizar Inscrição",
+    "continueExploring": "Continuar a explorar",
+    "clearCart": "Limpar Carrinho",
+    "itemRemoved": "Item removido",
+    "cartCleared": "Carrinho limpo"
+  },
+  "auth": {
+    "login": "Entrar",
+    "loginto": "Acede à tua conta",
+    "logout": "Sair",
+    "register": "Registar",
+    "email": "Email",
+    "password": "Palavra-passe",
+    "confirmPassword": "Confirmar palavra-passe",
+    "forgotPassword": "Esqueceu-se da palavra-passe?",
+    "noAccount": "Não tem conta?",
+    "hasAccount": "Já tem conta?",
+    "signUp": "Criar conta",
+    "signIn": "Entrar na conta"
+  },
+  "home": {
+    "categories": {
+      "title": "Categorias populares",
+      "subtitle": "Diversas categorias à tua escolha",
+      "events": "Eventos"
+    },
+    "upcomingEvents": {
+      "title": "Próximos Eventos",
+      "subtitle": "Descubra os melhores eventos acontecendo agora",
+      "all": "Todos",
+      "sport": "Desporto",
+      "culture": "Cultura",
+      "noEvents": "Nenhum evento em destaque no momento",
+      "viewAll": "Ver Todos os Eventos"
+    }
+  },
+  "quickSignup": {
+    "title": "Cria a tua conta e começa a participar em eventos incríveis",
+    "description": "Regista-te gratuitamente e descobre centenas de eventos à tua espera",
+    "namePlaceholder": "O teu nome",
+    "emailPlaceholder": "O teu email",
+    "submit": "Criar conta gratuita",
+    "submitting": "A criar conta...",
+    "successTitle": "Sucesso!",
+    "successDescription": "Conta criada com sucesso. Bem-vindo à INSCRIX!",
+    "errorTitle": "Erro",
+    "errorDescription": "Por favor, preenche todos os campos.",
+    "termsText": "Ao criares uma conta, concordas com os nossos",
+    "termsLink": "Termos e Condições",
+    "privacyLink": "Política de Privacidade"
+  },
+  "organizerSection": {
+      "title": "És organizador de eventos?",
+      "subtitle": "Junta-te à comunidade INSCRIX.",
+      "description": "Cria, divulga e gere os teus eventos desportivos com ferramentas simples, estatísticas detalhadas e total controlo sobre inscrições e pagamentos.",
+      "ctaButton": "Cria o teu evento",
+      "features": {
+        "0": {
+          "title": "Cria o teu evento com facilidade",
+          "description": "Publica o teu evento em poucos passos, com várias opções de personalização à tua disposição."
+        },
+        "1": {
+          "title": "Segurança",
+          "description": "Pagamentos simples e seguros, com múltiplas opções de pagamento disponíveis."
+        },
+        "2": {
+          "title": "Gestão Transparente",
+          "description": "Os organizadores podem gerir facilmente as inscrições, bilhetes e vendas de forma clara e eficiente."
+        },
+        "3": {
+          "title": "Validar Bilhete",
+          "description": "Faz a leitura do QR Code do bilhete através da app, de forma simples e rápida."
+        }
+      }
+    },
+  "newsletter": {
+      "title": "Já estás inscrix?",
+      "description": "A aventura começa com uma inscrição. Junta-te à comunidade INSCRIX e entra em acção.",
+      "subscribeTitle": "Subscrever Newsletter",
+      "namePlaceholder": "Nome",
+      "emailPlaceholder": "Email",
+      "termsLabel": "Confirmo que li e aceito os",
+      "termsLink": "Termos e Condições",
+      "privacyLink": "Política de Privacidade",
+      "contactAgreement": "Concordo em ser contactado pela Inscrix.",
+      "subscribeButton": "Subscrever"
+    },
+  "contactCard": {
+      "title": "Entra em contato",
+      "description": "Preenche o formulário e entraremos em contato.",
+      "namePlaceholder": "Nome",
+      "emailPlaceholder": "Email",
+      "phonePlaceholder": "Telefone",
+      "messagePlaceholder": "Mensagem",
+      "termsLabel": "Confirmo que li e aceito os",
+      "termsLink": "Termos e Condições",
+      "privacyLink": "Política de Privacidade",
+      "dataAgreement": "Concordo com a utilização dos meus dados pessoais.",
+      "submitButton": "ENVIAR"
+    },
+  "footerDescription": {
+      "text": "A INSCRIX é a plataforma para todos os tipos de eventos — desportivos, culturais, formativos ou recreativos. Inscreve-te. Participa. Organiza. Tudo num só lugar."
+    },
+  "footer2": {
+      "learnMore": "Saber mais",
+      "aboutUs": "Sobre nós",
+      "faqs": "FAQ's",
+      "contact": "Contatos",
+      "termsAndConditions": "Termos e Condições",
+      "privacyPolicy": "Política de Privacidade"
+    },
+  "contactInfo": {
+      "getInTouch": "Entrar em contato",
+      "email": "hello@inscrix.pt",
+      "phone": "+351 xxx xxx xxx"
+    },
+  "copyright": {
+      "text": "© 2025 INSCRIX.PT. Todos os direitos reservados.",
+      "madeByPrefix": "Feito por",
+      "madeByName": "BOWIE"
+    },
+  "footer": {
+    "company": "Empresa",
+    "about": "Sobre nós",
+    "contact": "Contactos",
+    "legal": "Legal",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos e Condições",
+    "support": "Apoio",
+    "faq": "FAQ",
+    "help": "Ajuda",
+    "followUs": "Siga-nos",
+    "allRightsReserved": "Todos os direitos reservados"
+  },
+  "herosec": {
+    "buttonprocurar": "Procurar",
+    "heventos": "Procurar Eventos",
+    "buttonsearch": "Procurar"
+  },
+  "hero": {
+    "title": "Descubra e Participe nos Melhores Eventos",
+    "subtitle": "A plataforma que liga pessoas através de experiências únicas",
+    "cta": "Explorar Eventos",
+    "stats": {
+      "events": "Eventos",
+      "participants": "Participantes",
+      "cities": "Cidades"
+    }
+  },
+  "eventosPage": {
+    "header": {
+      "title": "Eventos em Portugal",
+      "subtitlePart1": "Descobre experiências únicas perto de ti. Desde",
+      "subtitlePart2": "eventos desportivos",
+      "subtitlePart3": "emocionantes a",
+      "subtitlePart4": "festivais culturais",
+      "subtitlePart5": "inspiradores - encontra o teu próximo grande momento."  
+    },
+    "statistics": {
+      "totalEvents": "Eventos Disponíveis",
+      "totalParticipants": "Participantes Inscritos",
+      "availableSpots": "Vagas Disponíveis"
+    },
+    "buttons": {
+      "createEvent": "Criar o Meu Evento",
+      "exploreCategory": "Explorar por Categoria",
+      "refreshEvents": "🔄 Atualizar Eventos",
+      "createEvent2": "Criar Evento",
+      "exploreCategory2": "Explorar Categorias"
+    },
+    "filtersSection": {
+      "overlayAriaLabel": "Overlay for readability",
+      "heading": "Encontra o Evento Perfeito",
+      "subheading": "Usa os filtros para descobrir eventos que combinam contigo",
+      "searchLabel": "O que procuras?",
+      "searchPlaceholder": "Ex: maratona, fado, BTT...",
+      "categoryLabel": "Categoria",
+      "categoryPlaceholder": "Escolhe uma categoria",
+      "allCategories": "Todas as Categorias",
+      "locationLabel": "Onde?",
+      "locationPlaceholder": "Escolhe uma cidade",
+      "allLocations": "Todas as Cidades",
+      "sortLabel": "Ordenar por",
+      "sortPlaceholder": "Como ordenar?",
+      "sortDate": "Mais Próximos",
+      "sortParticipants": "Mais Populares",
+      "activeFilters": "Filtros activos:",
+      "clearAllFilters": "Limpar todos os filtros",
+      "removeSearchFilter": "Remover filtro de pesquisa",
+      "removeCategoryFilter": "Remover filtro de categoria",
+      "removeLocationFilter": "Remover filtro de localização"
+    }
+  }
+}
