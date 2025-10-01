@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,6 +34,7 @@ interface ParticipantFormData {
 }
 
 export function ParticipantRegisterForm() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<ParticipantFormData>({
     username: "",
     email: "",
@@ -101,7 +103,7 @@ export function ParticipantRegisterForm() {
 
     setValidations(prev => ({
       ...prev,
-      username: { isValid: false, isChecking: true, message: "A verificar disponibilidade..." }
+      username: { isValid: false, isChecking: true, message: t("orgReg.usernameChecking") }
     }));
 
     // Simulate API call to check username availability
@@ -112,7 +114,7 @@ export function ParticipantRegisterForm() {
         username: { 
           isValid: isAvailable, 
           isChecking: false, 
-          message: isAvailable ? "Nome de utilizador disponível" : "Nome de utilizador indisponível. Escolha outro nome." 
+          message: isAvailable ? t("orgReg.usernameAvailable") : t("orgReg.usernameUnavailable") 
         }
       }));
     }, 1000);
@@ -159,7 +161,7 @@ export function ParticipantRegisterForm() {
     if (!citizenCard) {
       setValidations(prev => ({
         ...prev,
-        citizenCard: { isValid: false, message: "Cartão de Cidadão é obrigatório" }
+        citizenCard: { isValid: false, message: t("authParticipant.citizenCardRequired") }
       }));
       return;
     }
@@ -170,14 +172,14 @@ export function ParticipantRegisterForm() {
       if (cleaned.length !== 8) {
         setValidations(prev => ({
           ...prev,
-          citizenCard: { isValid: false, message: "CC deve ter 8 dígitos numéricos" }
+          citizenCard: { isValid: false, message: t("authParticipant.citizenCardInvalid") }
         }));
         return;
       }
       
       setValidations(prev => ({
         ...prev,
-        citizenCard: { isValid: true, message: "CC válido" }
+        citizenCard: { isValid: true, message: t("authParticipant.citizenCardValid") }
       }));
       return;
     }
@@ -314,7 +316,7 @@ export function ParticipantRegisterForm() {
       gender: !!formData.gender,
       birthDate: !!formData.birthDate,
       city: formData.city.length >= 2,
-      // citizenCard: validations.citizenCard.isValid,
+      citizenCard: validations.citizenCard.isValid,
       acceptedTerms: legalConsents.acceptedTerms,
       acceptedPrivacy: legalConsents.acceptedPrivacy
     };
@@ -336,8 +338,8 @@ export function ParticipantRegisterForm() {
     
     if (!isFormValid()) {
       toast({
-        title: "Formulário inválido",
-        description: "Por favor, corrija os erros antes de continuar",
+        title: t("authParticipant.formInvalidTitle"),
+        description: t("authParticipant.formInvalidDesc"),
         variant: "destructive",
       });
       return;
@@ -486,8 +488,8 @@ export function ParticipantRegisterForm() {
       securityMonitoring.trackRegistrationAttempt(true, 'participant');
       
       toast({
-        title: "Conta criada com sucesso! 🎉",
-        description: "Verifique o seu email para confirmar a conta. O email pode demorar alguns minutos a chegar devido à carga do servidor.",
+        title: t("authParticipant.toastSuccessTitle"),
+        description: t("authParticipant.toastSuccessDesc"),
         variant: "default",
         duration: 8000,
       });
@@ -502,8 +504,8 @@ export function ParticipantRegisterForm() {
       securityMonitoring.trackRegistrationAttempt(false, 'participant', errorMessage);
       
       toast({
-        title: "Erro ao criar conta",
-        description: "Erro inesperado. Tente novamente mais tarde ou contacte o suporte se o problema persistir.",
+        title: t("authParticipant.errorCreateAccount"),
+        description: t("authParticipant.errorUnexpected"),
         variant: "destructive",
       });
     } finally {
@@ -522,14 +524,14 @@ export function ParticipantRegisterForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Username */}
         <div className="space-y-2">
-          <Label htmlFor="username">Nome de Utilizador *</Label>
+          <Label htmlFor="username">{t("authParticipant.usernameLabel")} *</Label>
           <div className="relative">
             <Input
               id="username"
               name="username"
               value={formData.username}
               onChange={handleChange}
-              placeholder="Ex: joao123"
+              placeholder={t("authParticipant.usernamePlaceholder")}
               required
             />
             <div className="absolute right-2 top-1/2 -translate-y-1/2">
@@ -545,7 +547,7 @@ export function ParticipantRegisterForm() {
 
         {/* Email */}
         <div className="space-y-2">
-          <Label htmlFor="email">Email *</Label>
+          <Label htmlFor="email">{t("authParticipant.emailLabel")} *</Label>
           <div className="relative">
             <Input
               id="email"
@@ -553,7 +555,7 @@ export function ParticipantRegisterForm() {
               type="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="seu.email@exemplo.com"
+              placeholder={t("authParticipant.emailPlaceholder")}
               required
             />
             <div className="absolute right-2 top-1/2 -translate-y-1/2">
@@ -571,33 +573,33 @@ export function ParticipantRegisterForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* First Name */}
         <div className="space-y-2">
-          <Label htmlFor="firstName">Primeiro Nome *</Label>
+          <Label htmlFor="firstName">{t("authParticipant.firstNameLabel")} *</Label>
           <Input
             id="firstName"
             name="firstName"
             value={formData.firstName}
             onChange={handleChange}
-            placeholder="João"
+            placeholder={t("authParticipant.firstNamePlaceholder")}
             required
           />
           {formData.firstName && formData.firstName.length < 2 && (
-            <p className="text-xs text-destructive">Deve ter pelo menos 2 caracteres</p>
+            <p className="text-xs text-destructive">{t("authParticipant.firstNameMinLength")}</p>
           )}
         </div>
 
         {/* Last Name */}
         <div className="space-y-2">
-          <Label htmlFor="lastName">Último Nome *</Label>
+          <Label htmlFor="lastName">{t("authParticipant.lastNameLabel")} *</Label>
           <Input
             id="lastName"
             name="lastName"
             value={formData.lastName}
             onChange={handleChange}
-            placeholder="Silva"
+            placeholder={t("authParticipant.lastNamePlaceholder")}
             required
           />
           {formData.lastName && formData.lastName.length < 2 && (
-            <p className="text-xs text-destructive">Deve ter pelo menos 2 caracteres</p>
+            <p className="text-xs text-destructive">{t("authParticipant.lastNameMinLength")}</p>
           )}
         </div>
       </div>
@@ -605,7 +607,7 @@ export function ParticipantRegisterForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Password */}
         <div className="space-y-2">
-          <Label htmlFor="password">Palavra-passe *</Label>
+          <Label htmlFor="password">{t("authParticipant.passwordLabel")} *</Label>
           <div className="relative">
             <Input
               id="password"
@@ -613,7 +615,7 @@ export function ParticipantRegisterForm() {
               type={showPassword ? "text" : "password"}
               value={formData.password}
               onChange={handleChange}
-              placeholder="Mínimo 8 caracteres"
+              placeholder={t("authParticipant.passwordPlaceholder")}
               required
             />
             <Button
@@ -635,7 +637,7 @@ export function ParticipantRegisterForm() {
 
         {/* Confirm Password */}
         <div className="space-y-2">
-          <Label htmlFor="confirmPassword">Confirmar Palavra-passe *</Label>
+          <Label htmlFor="confirmPassword">{t("authParticipant.confirmPasswordLabel")} *</Label>
           <div className="relative">
             <Input
               id="confirmPassword"
@@ -643,7 +645,7 @@ export function ParticipantRegisterForm() {
               type={showConfirmPassword ? "text" : "password"}
               value={formData.confirmPassword}
               onChange={handleChange}
-              placeholder="Repita a palavra-passe"
+              placeholder={t("authParticipant.confirmPasswordPlaceholder")}
               required
             />
             <Button
@@ -666,26 +668,26 @@ export function ParticipantRegisterForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Citizen Card */}
-        {/* <div className="space-y-2">
-          <Label htmlFor="citizenCard" className="text-sm">Cartão de Cidadão *</Label>
+        <div className="space-y-2">
+          <Label htmlFor="citizenCard" className="text-sm">{t("authParticipant.citizenCardLabel")} *</Label>
           <Input
             id="citizenCard"
             name="citizenCard"
             value={formData.citizenCard}
             onChange={handleChange}
             placeholder="12345678"
-            
+            required
           />
           {validations.citizenCard.message && (
             <p className={`text-xs ${validations.citizenCard.isValid ? "text-green-600" : "text-destructive"}`}>
               {validations.citizenCard.message}
             </p>
           )}
-        </div> */}
+        </div>
 
         {/* NIF */}
         <div className="space-y-2">
-          <Label htmlFor="nif" className="text-sm">NIF</Label>
+          <Label htmlFor="nif" className="text-sm">{t("authParticipant.nifLabel")}</Label>
           <Input
             id="nif"
             name="nif"
@@ -694,13 +696,13 @@ export function ParticipantRegisterForm() {
             placeholder="123456789"
           />
           {formData.nif && formData.nif.length > 0 && formData.nif.length !== 9 && (
-            <p className="text-xs text-destructive">NIF deve ter 9 dígitos</p>
+            <p className="text-xs text-destructive">{t("authParticipant.nifInvalid")}</p>
           )}
         </div>
 
         {/* Phone */}
         <div className="space-y-2">
-          <Label htmlFor="phone">Telefone *</Label>
+          <Label htmlFor="phone">{t("authParticipant.phoneLabel")} *</Label>
           <Input
             id="phone"
             name="phone"
@@ -710,7 +712,7 @@ export function ParticipantRegisterForm() {
             required
           />
           {formData.phone && formData.phone.length < 9 && (
-            <p className="text-xs text-destructive">Número de telefone deve ter pelo menos 9 dígitos</p>
+            <p className="text-xs text-destructive">{t("authParticipant.phoneInvalid")}</p>
           )}
         </div>
       </div>
@@ -718,7 +720,7 @@ export function ParticipantRegisterForm() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Birth Date */}
         <div className="space-y-2">
-          <Label htmlFor="birthDate">Data de Nascimento *</Label>
+          <Label htmlFor="birthDate">{t("authParticipant.birthDateLabel")} *</Label>
           <Input
             id="birthDate"
             name="birthDate"
@@ -731,23 +733,23 @@ export function ParticipantRegisterForm() {
 
         {/* Gender */}
         <div className="space-y-2">
-          <Label htmlFor="gender">Género *</Label>
+          <Label htmlFor="gender">{t("authParticipant.genderLabel")} *</Label>
           <Select onValueChange={(value) => handleSelectChange("gender", value)} required>
             <SelectTrigger>
-              <SelectValue placeholder="Selecione o género" />
+              <SelectValue placeholder={t("authParticipant.genderPlaceholder")} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="masculino">Masculino</SelectItem>
-              <SelectItem value="feminino">Feminino</SelectItem>
-              <SelectItem value="outro">Outro</SelectItem>
-              <SelectItem value="prefiro-nao-dizer">Prefiro não dizer</SelectItem>
+              <SelectItem value="masculino">{t("authParticipant.genderMale")}</SelectItem>
+              <SelectItem value="feminino">{t("authParticipant.genderFemale")}</SelectItem>
+              <SelectItem value="outro">{t("authParticipant.genderOther")}</SelectItem>
+              <SelectItem value="prefiro-nao-dizer">{t("authParticipant.genderPreferNot")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         {/* Nationality */}
         <div className="space-y-2">
-          <Label htmlFor="nationality">Nacionalidade *</Label>
+          <Label htmlFor="nationality">{t("authParticipant.nationalityLabel")} *</Label>
           <Select 
             value={formData.nationality} 
             onValueChange={(value) => handleSelectChange("nationality", value)}
@@ -757,15 +759,15 @@ export function ParticipantRegisterForm() {
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="Portugal">Portugal</SelectItem>
-              <SelectItem value="Espanha">Espanha</SelectItem>
-              <SelectItem value="França">França</SelectItem>
-              <SelectItem value="Itália">Itália</SelectItem>
-              <SelectItem value="Alemanha">Alemanha</SelectItem>
-              <SelectItem value="Reino Unido">Reino Unido</SelectItem>
-              <SelectItem value="Brasil">Brasil</SelectItem>
-              <SelectItem value="Estados Unidos">Estados Unidos</SelectItem>
-              <SelectItem value="Outro">Outro</SelectItem>
+              <SelectItem value="Portugal">{t("authParticipant.nationalityPortugal")}</SelectItem>
+              <SelectItem value="Espanha">{t("authParticipant.nationalitySpain")}</SelectItem>
+              <SelectItem value="França">{t("authParticipant.nationalityFrance")}</SelectItem>
+              <SelectItem value="Itália">{t("authParticipant.nationalityItaly")}</SelectItem>
+              <SelectItem value="Alemanha">{t("authParticipant.nationalityGermany")}</SelectItem>
+              <SelectItem value="Reino Unido">{t("authParticipant.nationalityUK")}</SelectItem>
+              <SelectItem value="Brasil">{t("authParticipant.nationalityBrazil")}</SelectItem>
+              <SelectItem value="Estados Unidos">{t("authParticipant.nationalityUSA")}</SelectItem>
+              <SelectItem value="Outro">{t("authParticipant.nationalityOther")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -775,18 +777,18 @@ export function ParticipantRegisterForm() {
       <div className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:col-span-2 space-y-2">
-            <Label htmlFor="street">Rua (Opcional)</Label>
+            <Label htmlFor="street">{t("authParticipant.streetLabel")}</Label>
             <Input
               id="street"
               name="street"
               value={formData.street}
               onChange={handleChange}
-              placeholder="Nome da rua"
+              placeholder={t("authParticipant.streetPlaceholder")}
             />
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="streetNumber">Número (Opcional)</Label>
+            <Label htmlFor="streetNumber">{t("authParticipant.streetNumberLabel")}</Label>
             <Input
               id="streetNumber"
               name="streetNumber"
@@ -799,28 +801,28 @@ export function ParticipantRegisterForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="city">Cidade *</Label>
+            <Label htmlFor="city">{t("authParticipant.cityLabel")} *</Label>
             <Input
               id="city"
               name="city"
               value={formData.city}
               onChange={handleChange}
-              placeholder="Lisboa"
+              placeholder={t("authParticipant.cityPlaceholder")}
               required
             />
             {formData.city && formData.city.length < 2 && (
-              <p className="text-xs text-destructive">Cidade deve ter pelo menos 2 caracteres</p>
+              <p className="text-xs text-destructive">{t("authParticipant.cityMinLength")}</p>
             )}
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="postalCode">Código Postal (Opcional)</Label>
+            <Label htmlFor="postalCode">{t("authParticipant.postalCodeLabel")}</Label>
             <Input
               id="postalCode"
               name="postalCode"
               value={formData.postalCode}
               onChange={handleChange}
-              placeholder="1000-001"
+              placeholder={t("authParticipant.postalCodePlaceholder")}
             />
           </div>
         </div>
@@ -836,7 +838,7 @@ export function ParticipantRegisterForm() {
         className="w-full" 
         disabled={isLoading || !isFormValid()}
       >
-        {isLoading ? "A criar conta..." : "Criar Conta de Participante"}
+        {isLoading ? t("authParticipant.creatingAccount") : t("authParticipant.createParticipantAccount")}
       </Button>
     </form>
   );
