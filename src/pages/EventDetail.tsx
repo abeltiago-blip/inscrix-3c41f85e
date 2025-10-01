@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams, useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -65,6 +66,7 @@ interface LocalTicketType {
 }
 
 export default function EventDetail() {
+  const { t } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -231,11 +233,11 @@ export default function EventDetail() {
     const registrationEnd = new Date(event.registration_end);
     
     if (now < registrationStart) {
-      return 'Inscrições abrem em breve';
+      return t('eventDetails.status_registration_soon');
     } else if (now > registrationEnd) {
-      return 'Inscrições encerradas';
+      return t('eventDetails.status_registration_closed');
     } else {
-      return 'Inscrições abertas';
+      return t('eventDetails.status_registration_open');
     }
   };
 
@@ -289,8 +291,8 @@ export default function EventDetail() {
         <Header />
         <main className="container mx-auto px-4 py-8">
           <div className="text-center">
-            <h1 className="text-2xl font-bold mb-4">Evento não encontrado</h1>
-            <Button onClick={() => navigate('/')}>Voltar ao Início</Button>
+            <h1 className="text-2xl font-bold mb-4">{t('eventDetails.event_not_found_title')}</h1>
+            <Button onClick={() => navigate('/')}>{t('eventDetails.back_to_home')}</Button>
           </div>
         </main>
         <Footer />
@@ -306,11 +308,11 @@ export default function EventDetail() {
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
           <button onClick={() => navigate('/')} className="hover:text-primary">
-            Início
+            {t('eventDetails.breadcrumb_home')}
           </button>
           <span>/</span>
           <button onClick={() => navigate('/eventos')} className="hover:text-primary">
-            Eventos
+            {t('eventDetails.breadcrumb_events')}
           </button>
           <span>/</span>
           <span className="text-foreground">{event.title}</span>
@@ -330,7 +332,7 @@ export default function EventDetail() {
             {/* Event Type Badge */}
             <div className="absolute top-3 sm:top-6 left-3 sm:left-6">
               <Badge variant="secondary" className="bg-white/90 text-foreground text-xs sm:text-sm">
-                {event.event_type === 'sports' ? 'Desportivo' : 'Cultural'}
+                {event.event_type === 'sports' ? t('eventDetails.event_type_sports') : t('eventDetails.event_type_cultural')}
               </Badge>
             </div>
 
@@ -394,7 +396,7 @@ export default function EventDetail() {
               <CardContent className="space-y-6">
                 {event.description && (
                   <div>
-                    <h3 className="font-semibold mb-2">Descrição</h3>
+                    <h3 className="font-semibold mb-2">{t('eventDetails.description')}</h3>
                     <MarkdownRenderer 
                       content={event.description} 
                       className="text-muted-foreground leading-relaxed"
@@ -410,7 +412,7 @@ export default function EventDetail() {
                     <div className="flex items-center gap-3">
                       <Calendar className="h-5 w-5 text-primary" />
                       <div>
-                        <div className="font-medium">Data e Hora</div>
+                        <div className="font-medium">{t('eventDetails.date_and_time')}</div>
                         <div className="text-sm text-muted-foreground">
                           {new Date(event.start_date).toLocaleString('pt-PT')}
                           {event.end_date && (
@@ -423,7 +425,7 @@ export default function EventDetail() {
                     <div className="flex items-center gap-3">
                       <MapPin className="h-5 w-5 text-primary" />
                       <div>
-                        <div className="font-medium">Localização</div>
+                        <div className="font-medium">{t('eventDetails.location')}</div>
                         <div className="text-sm text-muted-foreground">{event.location}</div>
                         <div className="text-xs text-muted-foreground">{event.address}</div>
                       </div>
@@ -433,9 +435,9 @@ export default function EventDetail() {
                       <div className="flex items-center gap-3">
                         <Users className="h-5 w-5 text-primary" />
                         <div>
-                          <div className="font-medium">Participantes</div>
+                          <div className="font-medium">{t('eventDetails.participants')}</div>
                           <div className="text-sm text-muted-foreground">
-                            Máximo: {event.max_participants}
+                            {t('eventDetails.max_participants')}: {event.max_participants}
                           </div>
                         </div>
                       </div>
@@ -457,7 +459,7 @@ export default function EventDetail() {
                       <div className="flex items-center gap-3">
                         <User className="h-5 w-5 text-primary" />
                         <div>
-                          <div className="font-medium">Idade</div>
+                          <div className="font-medium">{t('eventDetails.age')}</div>
                           <div className="text-sm text-muted-foreground">
                             {event.min_age && event.max_age 
                               ? `${event.min_age} - ${event.max_age} anos`
@@ -488,7 +490,7 @@ export default function EventDetail() {
                   <>
                     <Separator />
                     <div>
-                      <h3 className="font-semibold mb-2">Informações Adicionais</h3>
+                      <h3 className="font-semibold mb-2">{t('eventDetails.additional_info')}</h3>
                       <MarkdownRenderer 
                         content={event.organizer_notes} 
                         className="text-sm text-muted-foreground"
@@ -502,7 +504,7 @@ export default function EventDetail() {
                     <Separator />
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-semibold mb-1">Regulamento</h3>
+                        <h3 className="font-semibold mb-1">{t('eventDetails.regulation')}</h3>
                         <p className="text-sm text-muted-foreground">
                           Consulte o regulamento completo do evento
                         </p>
@@ -513,7 +515,7 @@ export default function EventDetail() {
                         className="gap-2"
                       >
                         <FileText className="h-4 w-4" />
-                        Ver Regulamento
+                        {t('eventDetails.view_regulation')}
                       </Button>
                     </div>
                   </>
@@ -523,7 +525,7 @@ export default function EventDetail() {
                   <>
                     <Separator />
                     <div>
-                      <h3 className="font-semibold mb-2">Termos e Condições</h3>
+                      <h3 className="font-semibold mb-2">{t('eventDetails.terms_and_conditions')}</h3>
                       <MarkdownRenderer 
                         content={event.terms_and_conditions} 
                         className="text-sm text-muted-foreground"
@@ -541,13 +543,13 @@ export default function EventDetail() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Euro className="h-5 w-5" />
-                  Bilhetes Disponíveis
+                  {t('eventDetails.tickets_available')}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {ticketTypes.length === 0 ? (
                   <div className="text-center py-6 text-muted-foreground">
-                    <p>Nenhum bilhete disponível</p>
+                    <p>{t('eventDetails.no_tickets_available')}</p>
                   </div>
                 ) : (
                   <>
@@ -610,30 +612,30 @@ export default function EventDetail() {
                             {/* Inclusions */}
                             {(ticket.includes_tshirt || ticket.includes_kit || ticket.includes_meal || ticket.includes_insurance) && (
                               <div className="space-y-2 pt-2 border-t border-border/30">
-                                <div className="text-xs font-medium text-foreground">Inclui:</div>
+                                <div className="text-xs font-medium text-foreground">{t('eventDetails.includes')}:</div>
                                 <div className="flex flex-wrap gap-2">
                                   {ticket.includes_tshirt && (
                                     <div className="flex items-center gap-1 text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded">
                                       <Package className="h-3 w-3 text-primary" />
-                                      T-shirt
+                                      {t('eventDetails.tshirt')}
                                     </div>
                                   )}
                                   {ticket.includes_kit && (
                                     <div className="flex items-center gap-1 text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded">
                                       <Package className="h-3 w-3 text-primary" />
-                                      Kit
+                                      {t('eventDetails.kit')}
                                     </div>
                                   )}
                                   {ticket.includes_meal && (
                                     <div className="flex items-center gap-1 text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded">
                                       <Utensils className="h-3 w-3 text-primary" />
-                                      Refeição
+                                      {t('eventDetails.meal')}
                                     </div>
                                   )}
                                   {ticket.includes_insurance && (
                                     <div className="flex items-center gap-1 text-xs text-muted-foreground bg-muted/50 px-2 py-0.5 rounded">
                                       <Shield className="h-3 w-3 text-primary" />
-                                      Seguro
+                                      {t('eventDetails.insurance')}
                                     </div>
                                   )}
                                 </div>
