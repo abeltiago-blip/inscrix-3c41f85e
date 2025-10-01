@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,6 +27,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
   onAddressChange,
   onCoordinatesChange
 }) => {
+  const { t } = useTranslation();
   const [coordinates, setCoordinates] = useState({ 
     lat: latitude || 38.7169, 
     lng: longitude || -9.1395 
@@ -90,32 +92,32 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <MapPin className="h-5 w-5" />
-          Localização do Evento
+          {t("locationSelector.cardTitle")}
         </CardTitle>
         <CardDescription>
-          Defina o local onde o evento irá decorrer
+          {t("locationSelector.cardDescription")}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="location">Nome do Local</Label>
+            <Label htmlFor="location">{t("locationSelector.locationLabel")}</Label>
             <Input
               id="location"
               value={location}
               onChange={(e) => onLocationChange(e.target.value)}
-              placeholder="Ex: Estádio da Luz, Centro Cultural"
+              placeholder={t("locationSelector.locationPlaceholder")}
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="address">Endereço Completo</Label>
+            <Label htmlFor="address">{t("locationSelector.addressLabel")}</Label>
             <div className="flex gap-2">
               <Input
                 id="address"
                 value={address}
                 onChange={(e) => onAddressChange(e.target.value)}
-                placeholder="Rua, número, cidade, código postal"
+                placeholder={t("locationSelector.addressPlaceholder")}
                 className="flex-1"
               />
               <Button
@@ -132,7 +134,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
           {(latitude && longitude) && (
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="latitude">Latitude</Label>
+                <Label htmlFor="latitude">{t("locationSelector.latitudeLabel")}</Label>
                 <Input
                   id="latitude"
                   value={latitude}
@@ -146,7 +148,7 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="longitude">Longitude</Label>
+                <Label htmlFor="longitude">{t("locationSelector.longitudeLabel")}</Label>
                 <Input
                   id="longitude"
                   value={longitude}
