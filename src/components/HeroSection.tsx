@@ -4,6 +4,7 @@ import { Search, MapPin, Calendar } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { useTranslation } from "react-i18next";
 
 interface Event {
   id: string;
@@ -17,6 +18,7 @@ interface Event {
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [featuredEvents, setFeaturedEvents] = useState<Event[]>([]);
 
@@ -100,8 +102,8 @@ const HeroSection = () => {
     const fallbackEvents = [
       {
         id: "fallback-1",
-        title: "EVENTOS EM DESTAQUE",
-        subtitle: "Descubra experiências incríveis",
+        title: t("events.featured"),
+        subtitle: t("events.fallbackSubtitle"),
         location: "Portugal",
         start_date: new Date().toISOString(),
         image_url: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800&h=500&fit=crop"
@@ -154,8 +156,8 @@ const HeroSection = () => {
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <h3 className="text-sm font-bold mb-1">{featuredEvents[1]?.title || "OUTRO EVENTO"}</h3>
-                  <p className="text-xs opacity-90">{featuredEvents[1]?.location || "Portugal"}</p>
+                  <h3 className="text-sm font-bold mb-1">{featuredEvents[1]?.title || t("hero.defaultEventTitle")}</h3>
+                  <p className="text-xs opacity-90">{featuredEvents[1]?.location || t("hero.defaultEventLocation")}</p>
                 </div>
               </div>
 
@@ -172,8 +174,8 @@ const HeroSection = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
               <div className="absolute bottom-2 left-2 right-2 text-white">
-                <h3 className="text-xs font-bold mb-1">{featuredEvents[2]?.title || "EVENTO"}</h3>
-                <p className="text-xs opacity-90">{featuredEvents[2]?.location || "Portugal"}</p>
+                <h3 className="text-xs font-bold mb-1">{featuredEvents[2]?.title || t("hero.defaultEventTitle")}</h3>
+                <p className="text-xs opacity-90">{featuredEvents[2]?.location || t("hero.defaultEventLocation")}</p>
               </div>
             </div>
 
@@ -206,7 +208,7 @@ const HeroSection = () => {
                   </div>
                   
                   <h2 className="text-lg lg:text-xl font-bold leading-tight">
-                    {featuredEvents[0]?.title || "EVENTO EM DESTAQUE"}
+                    {featuredEvents[0]?.title || t("events.featured")}
                   </h2>
                   
                   <p className="text-sm opacity-95 line-clamp-2">
@@ -221,7 +223,7 @@ const HeroSection = () => {
               <div className="w-full space-y-4">
                 <div className="text-center mb-4">
                   <Search className="h-8 w-8 text-primary mx-auto mb-2" />
-                  <h3 className="text-sm font-bold text-foreground">Procurar Eventos</h3>
+                  <h3 className="text-sm font-bold text-foreground">{t('herosec.heventos')}</h3>
                 </div>
                 <div className="space-y-3">
                   <Input
@@ -236,7 +238,7 @@ const HeroSection = () => {
                     className="w-full h-10 text-sm font-semibold"
                     onClick={() => navigate('/eventos')}
                   >
-                    Procurar
+                    {t('herosec.buttonsearch')}
                   </Button>
                 </div>
               </div>
@@ -297,7 +299,7 @@ const HeroSection = () => {
                     </div>
                     
                     <h2 className="text-lg font-bold leading-tight">
-                      {featuredEvents[currentSlide]?.title || "EVENTO EM DESTAQUE"}
+                      {featuredEvents[currentSlide]?.title || t("events.featured")}
                     </h2>
                   </div>
                 </div>
@@ -331,7 +333,7 @@ const HeroSection = () => {
             <div className="space-y-4">
               <div className="flex items-center justify-center gap-2 mb-4">
                 <Search className="h-5 w-5 text-primary" />
-                <h3 className="text-sm font-bold text-foreground">Procurar</h3>
+                <h3 className="text-sm font-bold text-foreground">{t('herosec.buttonsearch')}</h3>
               </div>
               <div className="space-y-2">
                 <Input
@@ -347,7 +349,7 @@ const HeroSection = () => {
                 className="w-full h-10 text-sm font-semibold"
                 onClick={() => navigate('/eventos')}
               >
-                Procurar
+                {t('herosec.buttonsearch')}
               </Button>
             </div>
           </div>
