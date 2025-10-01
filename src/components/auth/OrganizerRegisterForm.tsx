@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,6 +33,7 @@ interface OrganizerFormData {
 }
 
 export function OrganizerRegisterForm() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<OrganizerFormData>({
     username: "",
     email: "",
@@ -103,7 +105,7 @@ export function OrganizerRegisterForm() {
 
     setValidations(prev => ({
       ...prev,
-      username: { isValid: false, isChecking: true, message: "A verificar disponibilidade..." }
+      username: { isValid: false, isChecking: true, message: t("orgReg.usernameChecking") }
     }));
 
     setTimeout(() => {
@@ -113,7 +115,7 @@ export function OrganizerRegisterForm() {
         username: { 
           isValid: isAvailable, 
           isChecking: false, 
-          message: isAvailable ? "Nome de utilizador disponível" : "Nome de utilizador indisponível. Escolha outro nome." 
+          message: isAvailable ? t("orgReg.usernameAvailable") : t("orgReg.usernameUnavailable") 
         }
       }));
     }, 1000);
@@ -171,7 +173,7 @@ export function OrganizerRegisterForm() {
       ...prev,
       supportEmail: { 
         isValid, 
-        message: isValid ? "Email válido" : "Por favor, insira um email válido" 
+        message: isValid ? t("orgReg.supportEmailValid") : t("orgReg.supportEmailInvalid") 
       }
     }));
   };
@@ -361,8 +363,8 @@ export function OrganizerRegisterForm() {
            validations.password.isValid &&
            validations.confirmPassword.isValid &&
            validations.companyNif.isValid &&
-           (formData.supportEmail === "" || validations.supportEmail.isValid) &&
-           (formData.citizenCard === "" || validations.citizenCard.isValid) &&
+           (formData.supportEmail === "" || validations.supportEmail.isValid) ||
+           (formData.citizenCard === "" || validations.citizenCard.isValid) ||
            formData.firstName.length >= 2 &&
            formData.lastName.length >= 2 &&
            formData.phone.length >= 9 &&
@@ -474,7 +476,7 @@ export function OrganizerRegisterForm() {
               
             default:
               toast({
-                title: "Erro ao criar conta",
+                title: t("authParticipant.errorCreateAccount"),
                 description: error.message || "Tente novamente mais tarde",
                 variant: "destructive",
               });
@@ -482,16 +484,16 @@ export function OrganizerRegisterForm() {
         } else {
           console.log("SignUp successful");
           toast({
-            title: "Conta de organizador criada com sucesso!",
-            description: "Verifique o seu email para ativar a conta",
+            title: t("orgReg.toastSuccessTitle"),
+            description: t("orgReg.toastSuccessDesc"),
           });
           navigate("/login");
         }
       } catch (error) {
         console.error("Catch error:", error);
         toast({
-          title: "Erro inesperado",
-          description: "Tente novamente mais tarde",
+          title: t("orgReg.toastErrorTitle"),
+          description: t("orgReg.toastErrorDesc"),
           variant: "destructive",
         });
       }
@@ -514,47 +516,47 @@ export function OrganizerRegisterForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Company Information Section */}
       <div className="bg-muted/50 p-4 rounded-lg">
-        <h3 className="font-semibold text-primary mb-4">Informações da Empresa/Organização</h3>
+        <h3 className="font-semibold text-primary mb-4">{t('orgReg.compInfoTitle')}</h3>
         
         <div className="space-y-4">
           {/* Company Name */}
           <div className="space-y-2">
-            <Label htmlFor="companyName">Nome da Empresa/Organização *</Label>
+            <Label htmlFor="companyName">{t('orgReg.compNameLabel')} *</Label>
             <Input
               id="companyName"
               name="companyName"
               value={formData.companyName}
               onChange={handleChange}
-              placeholder="Ex: EventosDesportivos Lda"
+              placeholder={t('orgReg.compNamePlaceholder')}
               required
             />
             {formData.companyName && formData.companyName.length < 2 && (
-              <p className="text-xs text-destructive">Nome da empresa deve ter pelo menos 2 caracteres</p>
+              <p className="text-xs text-destructive">{t('orgReg.compNameMinLengthMsg')}</p>
             )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Company NIF */}
             <div className="space-y-2">
-              <Label htmlFor="companyNif">NIF da Empresa *</Label>
+              <Label htmlFor="companyNif">{t('orgReg.compNifLabel')} *</Label>
               <Input
                 id="companyNif"
                 name="companyNif"
                 value={formData.companyNif}
                 onChange={handleChange}
-                placeholder="123456789"
+                placeholder={t('orgReg.compNifPlaceholder')}
                 required
               />
               {formData.companyNif && validations.companyNif.message && (
                 <p className={`text-xs ${validations.companyNif.isValid ? "text-green-600" : "text-destructive"}`}>
-                  {validations.companyNif.message}
+                  {validations.companyNif.isValid ? t('orgReg.compNifValidMsg') : t('orgReg.compNifInvalidMsg')}
                 </p>
               )}
             </div>
 
             {/* CAE */}
             <div className="space-y-2">
-              <Label htmlFor="cae">CAE - Código de Atividade (Opcional)</Label>
+              <Label htmlFor="cae">{t('orgReg.compCaeLabel')}</Label>
               <Input
                 id="cae"
                 name="cae"
@@ -567,59 +569,59 @@ export function OrganizerRegisterForm() {
 
           {/* Company Address */}
           <div className="space-y-2">
-            <Label htmlFor="companyAddress">Morada da Sede *</Label>
+            <Label htmlFor="companyAddress">{t('orgReg.compAddressLabel')} *</Label>
             <Input
               id="companyAddress"
               name="companyAddress"
               value={formData.companyAddress}
               onChange={handleChange}
-              placeholder="Rua, número, código postal"
+              placeholder={t('orgReg.compAddressPlaceholder')}
               required
             />
             {formData.companyAddress && formData.companyAddress.length < 10 && (
-              <p className="text-xs text-destructive">Indique a morada completa da sede</p>
+              <p className="text-xs text-destructive">{t('orgReg.compAddressMinLengthMsg')}</p>
             )}
           </div>
 
           {/* Company City */}
           <div className="space-y-2">
-            <Label htmlFor="companyCity">Cidade da Sede *</Label>
+            <Label htmlFor="companyCity">{t('orgReg.compCityLabel')} *</Label>
             <Input
               id="companyCity"
               name="companyCity"
               value={formData.companyCity}
               onChange={handleChange}
-              placeholder="Lisboa"
+              placeholder={t('orgReg.compCityPlaceholder')}
               required
             />
             {formData.companyCity && formData.companyCity.length < 2 && (
-              <p className="text-xs text-destructive">Cidade deve ter pelo menos 2 caracteres</p>
+              <p className="text-xs text-destructive">{t('orgReg.compCityMinLengthMsg')}</p>
             )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Company Phone */}
             <div className="space-y-2">
-              <Label htmlFor="companyPhone">Telefone da Empresa (Opcional)</Label>
+              <Label htmlFor="companyPhone">{t('orgReg.compPhoneLabel')}</Label>
               <Input
                 id="companyPhone"
                 name="companyPhone"
                 value={formData.companyPhone}
                 onChange={handleChange}
-                placeholder="212345678"
+                placeholder={t('orgReg.compPhonePlaceholder')}
               />
             </div>
 
             {/* Support Email */}
             <div className="space-y-2">
-              <Label htmlFor="supportEmail">Email de Suporte (Opcional)</Label>
+              <Label htmlFor="supportEmail">{t('orgReg.supportEmailLabel')}</Label>
               <Input
                 id="supportEmail"
                 name="supportEmail"
                 type="email"
                 value={formData.supportEmail}
                 onChange={handleChange}
-                placeholder="suporte@empresa.com"
+                placeholder={t('orgReg.supportEmailPlaceholder')}
               />
               {formData.supportEmail && validations.supportEmail.message && (
                 <p className={`text-xs ${validations.supportEmail.isValid ? "text-green-600" : "text-destructive"}`}>
@@ -633,20 +635,20 @@ export function OrganizerRegisterForm() {
 
       {/* Responsible Person Information */}
       <div className="bg-muted/30 p-4 rounded-lg">
-        <h3 className="font-semibold text-primary mb-4">Dados Pessoais do Responsável</h3>
+        <h3 className="font-semibold text-primary mb-4">{t('orgReg.respInfoTitle')}</h3>
         
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Username */}
             <div className="space-y-2">
-              <Label htmlFor="username">Nome de Utilizador *</Label>
+              <Label htmlFor="username">{t('orgReg.usernameLabel')} *</Label>
               <div className="relative">
                 <Input
                   id="username"
                   name="username"
                   value={formData.username}
                   onChange={handleChange}
-                  placeholder="Ex: joao123"
+                  placeholder={t('orgReg.usernamePlaceholder')}
                   required
                 />
                 <div className="absolute right-2 top-1/2 -translate-y-1/2">
@@ -662,7 +664,7 @@ export function OrganizerRegisterForm() {
 
             {/* Email */}
             <div className="space-y-2">
-              <Label htmlFor="email">Email Pessoal *</Label>
+              <Label htmlFor="email">{t('orgReg.emailLabel')} *</Label>
               <div className="relative">
                 <Input
                   id="email"
@@ -688,29 +690,29 @@ export function OrganizerRegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* First Name */}
             <div className="space-y-2">
-              <Label htmlFor="firstName">Primeiro Nome *</Label>
+              <Label htmlFor="firstName">{t('orgReg.firstNameLabel')} *</Label>
               <Input
                 id="firstName"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                placeholder="João"
+                placeholder={t('orgReg.firstNamePlaceholder')}
                 required
               />
               {formData.firstName && formData.firstName.length < 2 && (
-                <p className="text-xs text-destructive">Deve ter pelo menos 2 caracteres</p>
+                <p className="text-xs text-destructive">{t("orgReg.firstNameMinLengthMsg")}</p>
               )}
             </div>
 
             {/* Last Name */}
             <div className="space-y-2">
-              <Label htmlFor="lastName">Último Nome *</Label>
+              <Label htmlFor="lastName">{t('orgReg.lastNameLabel')} *</Label>
               <Input
                 id="lastName"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                placeholder="Silva"
+                placeholder={t('orgReg.lastNamePlaceholder')}
                 required
               />
               {formData.lastName && formData.lastName.length < 2 && (
@@ -722,7 +724,7 @@ export function OrganizerRegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Password */}
             <div className="space-y-2">
-              <Label htmlFor="password">Palavra-passe *</Label>
+              <Label htmlFor="password">{t('orgReg.passwordLabel')} *</Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -730,7 +732,7 @@ export function OrganizerRegisterForm() {
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder="Mínimo 8 caracteres"
+                  placeholder={t('orgReg.passwordPlaceholder')}
                   required
                 />
                 <Button
@@ -752,7 +754,7 @@ export function OrganizerRegisterForm() {
 
             {/* Confirm Password */}
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirmar Palavra-passe *</Label>
+              <Label htmlFor="confirmPassword">{t('orgReg.confirmPasswordLabel')} *</Label>
               <div className="relative">
                 <Input
                   id="confirmPassword"
@@ -760,7 +762,7 @@ export function OrganizerRegisterForm() {
                   type={showConfirmPassword ? "text" : "password"}
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  placeholder="Repita a palavra-passe"
+                  placeholder={t('orgReg.confirmPasswordPlaceholder')}
                   required
                 />
                 <Button
@@ -784,7 +786,7 @@ export function OrganizerRegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Phone */}
             <div className="space-y-2">
-              <Label htmlFor="phone">Telefone Pessoal *</Label>
+              <Label htmlFor="phone">{t('orgReg.phoneLabel')} *</Label>
               <Input
                 id="phone"
                 name="phone"
@@ -800,7 +802,7 @@ export function OrganizerRegisterForm() {
 
             {/* Citizen Card */}
             <div className="space-y-2">
-              <Label htmlFor="citizenCard">Cartão de Cidadão (8 dígitos) - Opcional</Label>
+              <Label htmlFor="citizenCard">{t('orgReg.citizenCardLabel')}</Label>
               <Input
                 id="citizenCard"
                 name="citizenCard"
@@ -819,23 +821,23 @@ export function OrganizerRegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Gender */}
             <div className="space-y-2">
-              <Label htmlFor="gender">Género *</Label>
+              <Label htmlFor="gender">{t('orgReg.genderLabel')} *</Label>
               <Select onValueChange={(value) => handleSelectChange("gender", value)} required>
                 <SelectTrigger>
-                  <SelectValue placeholder="Selecione o género" />
+                  <SelectValue placeholder={t('orgReg.genderPlaceholder')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="masculino">Masculino</SelectItem>
-                  <SelectItem value="feminino">Feminino</SelectItem>
-                  <SelectItem value="outro">Outro</SelectItem>
-                  <SelectItem value="prefiro-nao-dizer">Prefiro não dizer</SelectItem>
+                  <SelectItem value="masculino">{t('orgReg.genderOptionMasculino')}</SelectItem>
+                  <SelectItem value="feminino">{t('orgReg.genderOptionFeminino')}</SelectItem>
+                  <SelectItem value="outro">{t('orgReg.genderOptionOutro')}</SelectItem>
+                  <SelectItem value="prefiro-nao-dizer">{t('orgReg.genderOptionPrefiroNaoDizer')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             {/* Nationality */}
             <div className="space-y-2">
-              <Label htmlFor="nationality">Nacionalidade *</Label>
+              <Label htmlFor="nationality">{t('orgReg.nationalityLabel')} *</Label>
               <Select 
                 value={formData.nationality} 
                 onValueChange={(value) => handleSelectChange("nationality", value)}
@@ -845,15 +847,15 @@ export function OrganizerRegisterForm() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Portugal">Portugal</SelectItem>
-                  <SelectItem value="Espanha">Espanha</SelectItem>
-                  <SelectItem value="França">França</SelectItem>
-                  <SelectItem value="Itália">Itália</SelectItem>
-                  <SelectItem value="Alemanha">Alemanha</SelectItem>
-                  <SelectItem value="Reino Unido">Reino Unido</SelectItem>
-                  <SelectItem value="Brasil">Brasil</SelectItem>
-                  <SelectItem value="Estados Unidos">Estados Unidos</SelectItem>
-                  <SelectItem value="Outro">Outro</SelectItem>
+                  <SelectItem value="Portugal">{t('orgReg.nationalityPortugal')}</SelectItem>
+                  <SelectItem value="Espanha">{t('orgReg.nationalityEspanha')}</SelectItem>
+                  <SelectItem value="França">{t('orgReg.nationalityFranca')}</SelectItem>
+                  <SelectItem value="Itália">{t('orgReg.nationalityItalia')}</SelectItem>
+                  <SelectItem value="Alemanha">{t('orgReg.nationalityAlemanha')}</SelectItem>
+                  <SelectItem value="Reino Unido">{t('orgReg.nationalityReinoUnido')}</SelectItem>
+                  <SelectItem value="Brasil">{t('orgReg.nationalityBrasil')}</SelectItem>
+                  <SelectItem value="Estados Unidos">{t('orgReg.nationalityEUA')}</SelectItem>
+                  <SelectItem value="Outro">{t('orgReg.nationalityOutro')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -882,7 +884,7 @@ export function OrganizerRegisterForm() {
             Aguarde {getRetryTimeLeft()}s
           </>
         ) : (
-          "Criar Conta de Organizador"
+          t('orgReg.createOrganizerBtn')
         )}
       </Button>
     </form>
