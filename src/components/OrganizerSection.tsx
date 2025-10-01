@@ -1,30 +1,32 @@
 import { Button } from "@/components/ui/button";
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Shield, TrendingUp, CheckCircle, Smartphone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const OrganizerSection = () => {
+  const { t } = useTranslation();
   const features = [
     {
       icon: <TrendingUp className="h-8 w-8 text-primary" />,
-      title: "Cria o teu evento com facilidade",
-      description: "Publica o teu evento em poucos passos, com várias opções de personalização à tua disposição."
+      title: t("organizerSection.features.0.title"),
+      description: t("organizerSection.features.0.description"),
     },
     {
       icon: <Shield className="h-8 w-8 text-primary" />,
-      title: "Segurança",
-      description: "Pagamentos simples e seguros, com múltiplas opções de pagamento disponíveis."
+      title: t("organizerSection.features.1.title"),
+      description: t("organizerSection.features.1.description"),
     },
     {
       icon: <CheckCircle className="h-8 w-8 text-primary" />,
-      title: "Gestão Transparente",
-      description: "Os organizadores podem gerir facilmente as inscrições, bilhetes e vendas de forma clara e eficiente."
+      title: t("organizerSection.features.2.title"),
+      description: t("organizerSection.features.2.description"),
     },
     {
       icon: <Smartphone className="h-8 w-8 text-primary" />,
-      title: "Validar Bilhete",
-      description: "Faz a leitura do QR Code do bilhete através da app, de forma simples e rápida."
-    }
+      title: t("organizerSection.features.3.title"),
+      description: t("organizerSection.features.3.description"),
+    },
   ];
 
   return (
@@ -32,11 +34,11 @@ const OrganizerSection = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold">
-            És organizador de eventos?
-            <span className="text-primary block">Junta-te à comunidade INSCRIX.</span>
+            {t("organizerSection.title")}
+            <span className="text-primary block">{t("organizerSection.subtitle")}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Cria, divulga e gere os teus eventos desportivos com ferramentas simples, estatísticas detalhadas e total controlo sobre inscrições e pagamentos.
+          {t("organizerSection.description")}
           </p>
         </div>
 
@@ -63,7 +65,7 @@ const OrganizerSection = () => {
         <div className="text-center">
           <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/80">
             <Link to="/create-event">
-              Cria o teu evento
+             {t("organizerSection.ctaButton")}
             </Link>
           </Button>
         </div>
