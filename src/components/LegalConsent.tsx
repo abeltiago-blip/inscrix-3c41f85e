@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { ExternalLink } from "lucide-react";
@@ -13,6 +14,7 @@ interface LegalConsentProps {
 }
 
 export function LegalConsent({ onConsentChange, disabled = false }: LegalConsentProps) {
+  const { t } = useTranslation();
   const [consents, setConsents] = useState({
     acceptedTerms: false,
     acceptedPrivacy: false,
@@ -27,7 +29,7 @@ export function LegalConsent({ onConsentChange, disabled = false }: LegalConsent
 
   return (
     <div className="space-y-4 p-4 border rounded-lg bg-muted/30">
-      <h4 className="font-medium text-sm">Consentimentos Legais</h4>
+      <h4 className="font-medium text-sm">{t("legalConsent.title")}</h4>
       
       {/* Terms and Conditions */}
       <div className="flex items-start space-x-3">
@@ -45,17 +47,17 @@ export function LegalConsent({ onConsentChange, disabled = false }: LegalConsent
             htmlFor="acceptedTerms" 
             className="text-sm leading-relaxed cursor-pointer"
           >
-            Aceito os{' '}
+            {t("legalConsent.termsLabel").split(t("legalConsent.termsLinkText"))[0]}
             <a 
               href="/termos-condicoes" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary underline hover:text-primary/80 inline-flex items-center gap-1"
             >
-              Termos e Condições
+              {t("legalConsent.termsLinkText")}
               <ExternalLink className="h-3 w-3" />
             </a>
-            {' '}* (obrigatório)
+            {t("legalConsent.termsLabel").split(t("legalConsent.termsLinkText"))[1]}
           </Label>
         </div>
       </div>
@@ -76,17 +78,17 @@ export function LegalConsent({ onConsentChange, disabled = false }: LegalConsent
             htmlFor="acceptedPrivacy" 
             className="text-sm leading-relaxed cursor-pointer"
           >
-            Aceito a{' '}
+            {t("legalConsent.privacyLabel").split(t("legalConsent.privacyLinkText"))[0]}
             <a 
               href="/politica-privacidade" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-primary underline hover:text-primary/80 inline-flex items-center gap-1"
             >
-              Política de Privacidade
+              {t("legalConsent.privacyLinkText")}
               <ExternalLink className="h-3 w-3" />
             </a>
-            {' '}* (obrigatório)
+            {t("legalConsent.privacyLabel").split(t("legalConsent.privacyLinkText"))[1]}
           </Label>
         </div>
       </div>
@@ -107,18 +109,17 @@ export function LegalConsent({ onConsentChange, disabled = false }: LegalConsent
             htmlFor="acceptedMarketing" 
             className="text-sm leading-relaxed cursor-pointer"
           >
-            Aceito receber comunicações de marketing, newsletters e informações sobre eventos (opcional)
+            {t("legalConsent.marketingLabel")}
           </Label>
           <p className="text-xs text-muted-foreground">
-            Pode alterar esta preferência a qualquer momento nas definições da sua conta.
+            {t("legalConsent.marketingDesc")}
           </p>
         </div>
       </div>
 
       <div className="text-xs text-muted-foreground">
         <p>
-          * Os campos marcados são obrigatórios para criar a sua conta. 
-          Os seus dados pessoais serão tratados de acordo com o RGPD.
+         {t("legalConsent.requiredNote")}
         </p>
       </div>
     </div>
