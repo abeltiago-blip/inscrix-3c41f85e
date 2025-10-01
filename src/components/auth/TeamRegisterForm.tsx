@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,6 +31,7 @@ interface TeamFormData {
 }
 
 export function TeamRegisterForm() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<TeamFormData>({
     username: "",
     email: "",
@@ -97,7 +99,7 @@ export function TeamRegisterForm() {
 
     setValidations(prev => ({
       ...prev,
-      username: { isValid: false, isChecking: true, message: "A verificar disponibilidade..." }
+      username: { isValid: false, isChecking: true, message: t("orgReg.usernameChecking") }
     }));
 
     setTimeout(() => {
@@ -107,7 +109,7 @@ export function TeamRegisterForm() {
         username: { 
           isValid: isAvailable, 
           isChecking: false, 
-          message: isAvailable ? "Nome de utilizador disponível" : "Nome de utilizador indisponível. Escolha outro nome." 
+          message: isAvailable ? t("orgReg.usernameAvailable") : t("orgReg.usernameUnavailable") 
         }
       }));
     }, 1000);
@@ -188,7 +190,7 @@ export function TeamRegisterForm() {
     if (!citizenCard) {
       setValidations(prev => ({
         ...prev,
-        citizenCard: { isValid: false, message: "Cartão de Cidadão é obrigatório" }
+        citizenCard: { isValid: false, message: t("authParticipant.citizenCardRequired")}
       }));
       return;
     }
@@ -199,14 +201,14 @@ export function TeamRegisterForm() {
       if (cleaned.length !== 8) {
         setValidations(prev => ({
           ...prev,
-          citizenCard: { isValid: false, message: "CC deve ter 8 dígitos numéricos" }
+          citizenCard: { isValid: false, message: t("authParticipant.citizenCardInvalid") }
         }));
         return;
       }
       
       setValidations(prev => ({
         ...prev,
-        citizenCard: { isValid: true, message: "CC válido" }
+        citizenCard: { isValid: true, message: t("authParticipant.citizenCardValid")}
       }));
       return;
     }
@@ -412,19 +414,19 @@ export function TeamRegisterForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       {/* Team Information Section */}
       <div className="bg-muted/50 p-4 rounded-lg">
-        <h3 className="font-semibold text-primary mb-4">Informações da Equipa</h3>
+        <h3 className="font-semibold text-primary mb-4">{t("authTeam.teamInfoTitle")}</h3>
         
         <div className="space-y-4">
           {/* Team Name */}
           <div className="space-y-2">
-            <Label htmlFor="teamName">Nome da Equipa/Clube *</Label>
+            <Label htmlFor="teamName">{t("authTeam.teamNameLabel")} *</Label>
             <div className="relative">
               <Input
                 id="teamName"
                 name="teamName"
                 value={formData.teamName}
                 onChange={handleChange}
-                placeholder="Ex: Os Corredores de Braga"
+                placeholder={t("authTeam.teamNamePlaceholder")}
                 required
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2">
@@ -440,26 +442,26 @@ export function TeamRegisterForm() {
 
           {/* Team Description */}
           <div className="space-y-2">
-            <Label htmlFor="teamDescription">Descrição da Equipa (Opcional)</Label>
+            <Label htmlFor="teamDescription">{t("authTeam.teamDescriptionLabel")}</Label>
             <Textarea
               id="teamDescription"
               name="teamDescription"
               value={formData.teamDescription}
               onChange={handleChange}
-              placeholder="Breve descrição sobre a equipa (modalidade, cidade, etc.)"
+              placeholder={t("authTeam.teamDescriptionPlaceholder")}
               rows={3}
             />
           </div>
 
           {/* Affiliation Code */}
           <div className="space-y-2">
-            <Label htmlFor="affiliationCode">Código de Filiação (Opcional)</Label>
+            <Label htmlFor="affiliationCode">{t("authTeam.affiliationCodeLabel")}</Label>
             <Input
               id="affiliationCode"
               name="affiliationCode"
               value={formData.affiliationCode}
               onChange={handleChange}
-              placeholder="Número de clube federado (se aplicável)"
+              placeholder={t("authTeam.affiliationCodePlaceholder")}
             />
           </div>
         </div>
@@ -467,13 +469,13 @@ export function TeamRegisterForm() {
 
       {/* Responsible Person Information */}
       <div className="bg-muted/30 p-4 rounded-lg">
-        <h3 className="font-semibold text-primary mb-4">Dados do Responsável da Equipa</h3>
+        <h3 className="font-semibold text-primary mb-4">{t("authTeam.responsibleTitle")}</h3>
         
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Username */}
             <div className="space-y-2">
-              <Label htmlFor="username">Nome de Utilizador *</Label>
+              <Label htmlFor="username">{t("authTeam.usernameLabel")} *</Label>
               <div className="relative">
                 <Input
                   id="username"
@@ -496,7 +498,7 @@ export function TeamRegisterForm() {
 
             {/* Email */}
             <div className="space-y-2">
-              <Label htmlFor="email">Email *</Label>
+              <Label htmlFor="email">{t("authTeam.emailLabel")} *</Label>
               <div className="relative">
                 <Input
                   id="email"
@@ -522,33 +524,33 @@ export function TeamRegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* First Name */}
             <div className="space-y-2">
-              <Label htmlFor="firstName">Primeiro Nome *</Label>
+              <Label htmlFor="firstName">{t("authTeam.firstNameLabel")} *</Label>
               <Input
                 id="firstName"
                 name="firstName"
                 value={formData.firstName}
                 onChange={handleChange}
-                placeholder="João"
+                placeholder={t("authTeam.firstNamePlaceholder")}
                 required
               />
               {formData.firstName && formData.firstName.length < 2 && (
-                <p className="text-xs text-destructive">Deve ter pelo menos 2 caracteres</p>
+                <p className="text-xs text-destructive">{t("authTeam.firstNameMinLength")}</p>
               )}
             </div>
 
             {/* Last Name */}
             <div className="space-y-2">
-              <Label htmlFor="lastName">Último Nome *</Label>
+              <Label htmlFor="lastName">{t("authTeam.lastNameLabel")} *</Label>
               <Input
                 id="lastName"
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleChange}
-                placeholder="Silva"
+                placeholder={t("authTeam.lastNamePlaceholder")}
                 required
               />
               {formData.lastName && formData.lastName.length < 2 && (
-                <p className="text-xs text-destructive">Deve ter pelo menos 2 caracteres</p>
+                <p className="text-xs text-destructive">{t("authTeam.lastNameMinLength")}</p>
               )}
             </div>
           </div>
@@ -556,7 +558,7 @@ export function TeamRegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Password */}
             <div className="space-y-2">
-              <Label htmlFor="password">Palavra-passe *</Label>
+              <Label htmlFor="password">{t("authTeam.passwordLabel")} *</Label>
               <div className="relative">
                 <Input
                   id="password"
@@ -564,7 +566,7 @@ export function TeamRegisterForm() {
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
                   onChange={handleChange}
-                  placeholder="Mínimo 8 caracteres"
+                  placeholder={t("authTeam.passwordPlaceholder")}
                   required
                 />
                 <Button
@@ -586,7 +588,7 @@ export function TeamRegisterForm() {
 
             {/* Confirm Password */}
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">Confirmar Palavra-passe *</Label>
+              <Label htmlFor="confirmPassword">{t("authTeam.confirmPasswordLabel")} *</Label>
               <div className="relative">
                 <Input
                   id="confirmPassword"
@@ -594,7 +596,7 @@ export function TeamRegisterForm() {
                   type={showConfirmPassword ? "text" : "password"}
                   value={formData.confirmPassword}
                   onChange={handleChange}
-                  placeholder="Repita a palavra-passe"
+                  placeholder={t("authTeam.confirmPasswordPlaceholder")}
                   required
                 />
                 <Button
@@ -618,7 +620,7 @@ export function TeamRegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Phone */}
             <div className="space-y-2">
-              <Label htmlFor="phone">Telefone *</Label>
+              <Label htmlFor="phone">{t("authTeam.phoneLabel")} *</Label>
               <Input
                 id="phone"
                 name="phone"
@@ -634,7 +636,7 @@ export function TeamRegisterForm() {
 
             {/* Citizen Card */}
             <div className="space-y-2">
-              <Label htmlFor="citizenCard">Cartão de Cidadão (8 dígitos) *</Label>
+              <Label htmlFor="citizenCard">{t("authTeam.citizenCardLabel")} *</Label>
               <Input
                 id="citizenCard"
                 name="citizenCard"
@@ -654,23 +656,23 @@ export function TeamRegisterForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Gender */}
             <div className="space-y-2">
-              <Label htmlFor="gender">Género *</Label>
+              <Label htmlFor="gender">{t("authTeam.genderLabel")} *</Label>
               <Select onValueChange={(value) => handleSelectChange("gender", value)} required>
                 <SelectTrigger>
-                  <SelectValue placeholder="Selecione o género" />
+                  <SelectValue placeholder={t("authTeam.genderPlaceholder")}/>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="masculino">Masculino</SelectItem>
-                  <SelectItem value="feminino">Feminino</SelectItem>
-                  <SelectItem value="outro">Outro</SelectItem>
-                  <SelectItem value="prefiro-nao-dizer">Prefiro não dizer</SelectItem>
+                  <SelectItem value="masculino">{t("authTeam.genderMale")}</SelectItem>
+                  <SelectItem value="feminino">{t("authTeam.genderFemale")}</SelectItem>
+                  <SelectItem value="outro">{t("authTeam.genderOther")}</SelectItem>
+                  <SelectItem value="prefiro-nao-dizer">{t("authTeam.genderNoSay")}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             {/* Nationality */}
             <div className="space-y-2">
-              <Label htmlFor="nationality">Nacionalidade *</Label>
+              <Label htmlFor="nationality">{t("authTeam.nationalityLabel")} *</Label>
               <Select 
                 value={formData.nationality} 
                 onValueChange={(value) => handleSelectChange("nationality", value)}
@@ -680,15 +682,15 @@ export function TeamRegisterForm() {
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Portugal">Portugal</SelectItem>
-                  <SelectItem value="Espanha">Espanha</SelectItem>
-                  <SelectItem value="França">França</SelectItem>
-                  <SelectItem value="Itália">Itália</SelectItem>
-                  <SelectItem value="Alemanha">Alemanha</SelectItem>
-                  <SelectItem value="Reino Unido">Reino Unido</SelectItem>
-                  <SelectItem value="Brasil">Brasil</SelectItem>
-                  <SelectItem value="Estados Unidos">Estados Unidos</SelectItem>
-                  <SelectItem value="Outro">Outro</SelectItem>
+                  <SelectItem value="Portugal">{t("authTeam.countryPortugal")}</SelectItem>
+                  <SelectItem value="Espanha">{t("authTeam.countrySpain")}</SelectItem>
+                  <SelectItem value="França">{t("authTeam.countryFrance")}</SelectItem>
+                  <SelectItem value="Itália">{t("authTeam.countryItaly")}</SelectItem>
+                  <SelectItem value="Alemanha">{t("authTeam.countryGermany")}</SelectItem>
+                  <SelectItem value="Reino Unido">{t("authTeam.countryUK")}</SelectItem>
+                  <SelectItem value="Brasil">{t("authTeam.countryBrazil")}</SelectItem>
+                  <SelectItem value="Estados Unidos">{t("authTeam.countryUS")}</SelectItem>
+                  <SelectItem value="Outro">{t("authTeam.countryOther")}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -697,24 +699,24 @@ export function TeamRegisterForm() {
           {/* Address and City */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="address">Endereço (Opcional)</Label>
+              <Label htmlFor="address">{t("authTeam.addressLabel")}</Label>
               <Input
                 id="address"
                 name="address"
                 value={formData.address}
                 onChange={handleChange}
-                placeholder="Rua, número, código postal"
+                placeholder={t("authTeam.addressPlaceholder")}
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="city">Cidade *</Label>
+              <Label htmlFor="city">{t("authTeam.cityLabel")} *</Label>
               <Input
                 id="city"
                 name="city"
                 value={formData.city}
                 onChange={handleChange}
-                placeholder="Lisboa"
+                placeholder={t("authTeam.cityPlaceholder")}
                 required
               />
               {formData.city && formData.city.length < 2 && (
@@ -735,7 +737,7 @@ export function TeamRegisterForm() {
         className="w-full" 
         disabled={isLoading || !isFormValid()}
       >
-        {isLoading ? "A criar conta..." : "Criar Conta de Equipa"}
+        {isLoading ? t("authTeam.creating") : t("authTeam.submit")}
       </Button>
     </form>
   );
