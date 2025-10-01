@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useTransition } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,6 +12,7 @@ interface QuickSignupFormProps {
 }
 
 const QuickSignupForm = ({ onWelcome }: QuickSignupFormProps) => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
@@ -21,8 +23,8 @@ const QuickSignupForm = ({ onWelcome }: QuickSignupFormProps) => {
     e.preventDefault();
     if (!email || !name) {
       toast({
-        title: "Erro",
-        description: "Por favor, preenche todos os campos.",
+        title: t("quickSignup.errorTitle"),
+        description: t("quickSignup.errorDescription"),
         variant: "destructive"
       });
       return;
@@ -33,8 +35,8 @@ const QuickSignupForm = ({ onWelcome }: QuickSignupFormProps) => {
     setTimeout(() => {
       setLoading(false);
       toast({
-        title: "Sucesso!",
-        description: "Conta criada com sucesso. Bem-vindo à INSCRIX!",
+        title: t("quickSignup.successTitle"),
+        description: t("quickSignup.successDescription"),
       });
       
       // Trigger welcome modal
@@ -68,10 +70,10 @@ const QuickSignupForm = ({ onWelcome }: QuickSignupFormProps) => {
         <Card className="shadow-xl border-0">
           <CardHeader className="text-center pb-8">
             <CardTitle className="text-2xl md:text-3xl font-bold">
-              Cria a tua conta e começa a participar em eventos incríveis
+              {t("quickSignup.title")}
             </CardTitle>
             <CardDescription className="text-lg">
-              Regista-te gratuitamente e descobre centenas de eventos à tua espera
+              {t("quickSignup.description")}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -82,7 +84,7 @@ const QuickSignupForm = ({ onWelcome }: QuickSignupFormProps) => {
                     <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
                       type="text"
-                      placeholder="O teu nome"
+                      placeholder={t("quickSignup.namePlaceholder")}
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="pl-10 h-12"
@@ -95,7 +97,7 @@ const QuickSignupForm = ({ onWelcome }: QuickSignupFormProps) => {
                     <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                     <Input
                       type="email"
-                      placeholder="O teu email"
+                      placeholder={t("quickSignup.emailPlaceholder")}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="pl-10 h-12"
@@ -112,11 +114,10 @@ const QuickSignupForm = ({ onWelcome }: QuickSignupFormProps) => {
                   className="px-8 h-12 font-semibold"
                   disabled={loading}
                 >
-                  {loading ? (
-                    "A criar conta..."
-                  ) : (
+                  {loading ? 
+                    t("quickSignup.submitting") : (
                     <>
-                      Criar conta gratuita
+                      {t("quickSignup.submit")}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </>
                   )}
@@ -125,13 +126,13 @@ const QuickSignupForm = ({ onWelcome }: QuickSignupFormProps) => {
             </form>
             
             <p className="text-center text-sm text-muted-foreground mt-6">
-              Ao criares uma conta, concordas com os nossos{" "}
+              {t("quickSignup.termsText")}{" "}
               <a href="/termos-condicoes" className="underline hover:text-primary">
-                Termos e Condições
+                {t("quickSignup.termsLink")}
               </a>{" "}
               e{" "}
               <a href="/politica-privacidade" className="underline hover:text-primary">
-                Política de Privacidade
+                {t("quickSignup.privacyLink")}
               </a>
             </p>
           </CardContent>
