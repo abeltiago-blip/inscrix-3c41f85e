@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +11,7 @@ import { TeamRegisterForm } from "@/components/auth/TeamRegisterForm";
 import { OrganizerRegisterForm } from "@/components/auth/OrganizerRegisterForm";
 
 export default function Register() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState("participant");
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -36,23 +38,23 @@ export default function Register() {
             <X className="h-4 w-4" />
           </Button>
           <CardHeader className="text-center pr-12">
-            <CardTitle className="text-2xl font-bold text-primary">Criar Conta</CardTitle>
+            <CardTitle className="text-2xl font-bold text-primary">{t("register.createAccountTitle")}</CardTitle>
             <CardDescription>
-              Escolha o tipo de conta que pretende criar
+             {t("register.createAccountDescription")}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="participant">Participante</TabsTrigger>
-                <TabsTrigger value="team">Equipa</TabsTrigger>
-                <TabsTrigger value="organizer">Organizador</TabsTrigger>
+                <TabsTrigger value="participant">{t("register.tabParticipant")}</TabsTrigger>
+                <TabsTrigger value="team">{t("register.tabTeam")}</TabsTrigger>
+                <TabsTrigger value="organizer">{t("register.tabOrganizer")}</TabsTrigger>
               </TabsList>
               
               <TabsContent value="participant" className="mt-6">
                 <div className="mb-4 p-4 bg-muted rounded-lg">
                   <p className="text-sm text-muted-foreground">
-                    <strong>Participante:</strong> Conta individual para inscrições em eventos desportivos e culturais.
+                    <strong>{t("register.tabParticipant")}:</strong> {t("register.participantInfo")}
                   </p>
                 </div>
                 <ParticipantRegisterForm />
@@ -61,7 +63,7 @@ export default function Register() {
               <TabsContent value="team" className="mt-6">
                 <div className="mb-4 p-4 bg-muted rounded-lg">
                   <p className="text-sm text-muted-foreground">
-                    <strong>Equipa:</strong> Conta para clubes ou grupos que inscrevem vários participantes em conjunto.
+                    <strong>{t("register.tabTeam")}:</strong>{t("register.teamInfo")}
                   </p>
                 </div>
                 <TeamRegisterForm />
@@ -70,7 +72,7 @@ export default function Register() {
               <TabsContent value="organizer" className="mt-6">
                 <div className="mb-4 p-4 bg-muted rounded-lg">
                   <p className="text-sm text-muted-foreground">
-                    <strong>Organizador:</strong> Conta para criar e gerir eventos na plataforma Inscrix.
+                    <strong>{t("register.tabOrganizer")}:</strong> {t("register.organizerInfo")}
                   </p>
                 </div>
                 <OrganizerRegisterForm />
@@ -79,9 +81,9 @@ export default function Register() {
 
             <div className="mt-6 text-center">
               <div className="text-sm text-muted-foreground">
-                Já tem conta?{" "}
+                {t("register.alreadyHaveAccount")}{" "}
                 <Link to="/login" className="text-primary hover:underline">
-                  Iniciar sessão
+                  {t("register.loginHere")}
                 </Link>
               </div>
             </div>
