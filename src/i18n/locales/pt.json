@@ -497,7 +497,17 @@
     "categories": {
       "title": "Categorias populares",
       "subtitle": "Diversas categorias à tua escolha",
-      "events": "Eventos"
+      "events": "Eventos",
+      "athletics": "Atletismo",
+      "cycling": "Ciclismo",
+      "football": "Futebol",
+      "swimming": "Natação",
+      "music": "Música",
+      "theatre": "Teatro",
+      "visualArts": "Artes Visuais",
+      "gastronomy": "Gastronomia",
+      "literature": "Literatura",
+      "cinema": "Cinema e Audiovisual"
     },
     "upcomingEvents": {
       "title": "Próximos Eventos",
@@ -668,5 +678,287 @@
       "removeCategoryFilter": "Remover filtro de categoria",
       "removeLocationFilter": "Remover filtro de localização"
     }
+  },
+  "faq": {
+    "header": {
+      "title": "Perguntas Frequentes",
+      "subtitle1": "Encontre respostas às perguntas mais comuns sobre a Inscrix.",
+      "subtitle2": "Se não encontrar o que procura, não hesite em contactar-nos."
+    },
+    "sidebar": {
+      "title": "Categorias",
+      "general": "Geral",
+      "registrations": "Inscrições",
+      "payments": "Pagamentos",
+      "timing": "Cronometragem",
+      "security": "Segurança",
+      "support": "Suporte Técnico"
+    },
+    "card": {
+      "questionCount": "{questions.length} perguntas nesta categoria"
+    },
+    "contact": {
+      "title": "Não encontrou a resposta?",
+      "subtitle": "A nossa equipa de suporte está sempre disponível para ajudar.",
+      "email": "suporte@inscrix.pt",
+      "phone": "+351 123 456 789",
+      "chat": "Chat em direto 24/7"
+    },
+    "general": {
+      "q1": "O que é a Inscrix?",
+      "a1": "A Inscrix é uma plataforma completa para gestão de eventos desportivos e culturais. Oferecemos soluções integradas para inscrições, pagamentos, cronometragem e gestão de participantes, tudo numa única plataforma fácil de usar.",
+      "q2": "Que tipos de eventos posso criar?",
+      "a2": "Pode criar qualquer tipo de evento: corridas, ciclismo, natação, triatlo, maratonas, caminhadas, festivais culturais, espetáculos, workshops, conferências e muito mais. A nossa plataforma é flexível e adapta-se a qualquer modalidade.",
+      "q3": "Preciso de conhecimentos técnicos para usar a Inscrix?",
+      "a3": "Não! A Inscrix foi desenhada para ser intuitiva e fácil de usar. Qualquer pessoa consegue criar e gerir eventos profissionais sem necessidade de conhecimentos técnicos. Além disso, oferecemos suporte completo e tutoriais.",
+      "q4": "A plataforma está disponível em português?",
+      "a4": "Sim, a Inscrix está completamente traduzida para português e adaptada ao mercado português, incluindo métodos de pagamento locais e regulamentações específicas."
+    },
+    "registrations": {
+      "q1": "Como funciona o processo de inscrição?",
+      "a1": "Os participantes acedem à página do evento, escolhem o tipo de bilhete, preenchem os seus dados e procedem ao pagamento. Recebem automaticamente um email de confirmação com todos os detalhes da inscrição.",
+      "q2": "Posso personalizar o formulário de inscrição?",
+      "a2": "Sim, pode adicionar campos personalizados conforme as necessidades do seu evento: tamanho de t-shirt, restrições alimentares, contacto de emergência, informações médicas, entre outros.",
+      "q3": "Como gerir as inscrições após o evento estar publicado?",
+      "a3": "Através do painel de organizador, pode ver todas as inscrições em tempo real, exportar listas de participantes, comunicar com os inscritos e gerir pagamentos pendentes.",
+      "q4": "Posso definir limites de participantes?",
+      "a4": "Sim, pode definir um número máximo de participantes geral ou por categoria/tipo de bilhete. As inscrições param automaticamente quando atingir o limite."
+    },
+    "payments": {
+      "q1": "Que métodos de pagamento estão disponíveis?",
+      "a1": "Oferecemos múltiplas opções: cartão de crédito/débito, transferência bancária, MB WAY, Paypal e outros métodos locais. Todos os pagamentos são processados com segurança máxima.",
+      "q2": "Quando recebo o dinheiro das inscrições?",
+      "a2": "Os pagamentos são transferidos para a sua conta num prazo de 2-5 dias úteis após a confirmação do pagamento pelo participante, deduzindo apenas uma pequena taxa de processamento.",
+      "q3": "Posso oferecer descontos e vouchers?",
+      "a3": "Sim, pode criar códigos de desconto, preços early bird, descontos por quantidade e vouchers personalizados com diferentes regras e limitações.",
+      "q4": "Como funcionam os reembolsos?",
+      "a4": "Pode definir políticas de reembolso personalizadas para cada evento. Os reembolsos são processados automaticamente através do mesmo método de pagamento original."
+    },
+    "timing": {
+      "q1": "Como funciona a cronometragem?",
+      "a1": "Utilizamos chips RFID de última geração que são ativados automaticamente quando o participante passa pelos pontos de cronometragem. Os resultados são calculados e publicados em tempo real.",
+      "q2": "Posso ter múltiplos pontos de cronometragem?",
+      "a2": "Sim, pode definir quantos pontos de cronometragem precisar: partida, chegada e pontos intermédios. Isto é especialmente útil para eventos longos ou com múltiplas modalidades.",
+      "q3": "Os resultados são oficiais?",
+      "a3": "Sim, o nosso sistema de cronometragem cumpre todas as normas internacionais e os resultados podem ser certificados oficialmente para competições federadas.",
+      "q4": "Posso ver os resultados em tempo real?",
+      "a4": "Sim, os resultados aparecem no nosso website em tempo real. Os participantes e espetadores podem acompanhar o progresso durante o evento."
+    },
+    "security": {
+      "q1": "Os meus dados estão seguros?",
+      "a1": "Absolutamente. Utilizamos encriptação de nível bancário (SSL 256-bit) e cumprimos rigorosamente o RGPD. Os dados dos participantes são protegidos com os mais altos padrões de segurança.",
+      "q2": "Como protegem os dados dos participantes?",
+      "a2": "Todos os dados pessoais são encriptados e armazenados em servidores seguros na Europa. Só tem acesso aos dados necessários para gerir o seu evento e pode apagá-los quando desejar.",
+      "q3": "Que medidas tomam contra fraude?",
+      "a3": "Implementamos sistemas avançados de deteção de fraude, verificação automática de pagamentos e monitorização contínua de atividades suspeitas."
+    },
+    "support": {
+      "q1": "Que tipo de suporte oferecem?",
+      "a1": "Oferecemos suporte completo por email, chat e telefone. A nossa equipa está disponível para ajudar desde a criação do evento até ao final da competição.",
+      "q2": "Têm tutoriais ou formação?",
+      "a2": "Sim, temos uma biblioteca completa de tutoriais em vídeo, guias escritos e oferecemos sessões de formação personalizadas para organizadores que gerem eventos grandes.",
+      "q3": "E se tiver problemas no dia do evento?",
+      "a3": "Temos uma linha de apoio dedicada para o dia do evento, com técnicos especializados prontos para resolver qualquer situação que possa surgir.",
+      "q4": "Posso migrar eventos de outras plataformas?",
+      "a4": "Sim, a nossa equipa pode ajudá-lo a migrar eventos e dados de outras plataformas de forma gratuita e sem interrupção do serviço."
+    }
+  },
+  "about": {
+    "title": "Sobre a Inscrix",
+    "subtitle": "Transformamos a gestão de eventos desportivos e culturais através da tecnologia, oferecendo soluções completas desde as inscrições até à cronometragem profissional.",
+
+    "mission": {
+      "title": "A Nossa Missão",
+      "desc": "Democratizar o acesso à tecnologia de ponta para organização de eventos",
+      "content": "Acreditamos que todos os organizadores de eventos, independentemente do tamanho ou orçamento, merecem ter acesso às melhores ferramentas..."
+    },
+
+    "values": {
+      "title": "Os Nossos Valores",
+      "simplicity": { "title": "Simplicidade", "desc": "Interfaces intuitivas que qualquer pessoa consegue usar" },
+      "reliability": { "title": "Confiabilidade", "desc": "Sistemas seguros e estáveis para os momentos mais importantes" },
+      "innovation": { "title": "Inovação", "desc": "Sempre na vanguarda das tecnologias para eventos" },
+      "passion": { "title": "Paixão", "desc": "Dedicação total ao sucesso dos nossos clientes" }
+    },
+
+    "solutions": {
+      "title": "As Nossas Soluções",
+      "registrations": {
+        "title": "Gestão de Inscrições",
+        "desc": "Sistema completo para gerir participantes",
+        "items": {
+          "items1":"Formulários personalizáveis",
+          "items2":"Pagamentos seguros integrados",
+          "items3":"Comunicação automática com participantes",
+          "items4":"Relatórios detalhados"
+        }
+      },
+      "timing": {
+        "title": "Cronometragem Profissional",
+        "desc": "Tecnologia de ponta para timing preciso",
+        "items": {
+          "items1":"Chips RFID de alta precisão",
+          "items2":"Resultados em tempo real",
+          "items3":"Múltiplos pontos de controlo",
+          "items4":"Certificados oficiais automáticos"
+        }
+      }
+    },
+
+    "integration": {
+      "title": "Integração Total",
+      "desc": "Uma plataforma, múltiplas funcionalidades",
+      "sports": { "title": "Eventos Desportivos", "desc": "Corridas, ciclismo, natação, triatlo e muito mais" },
+      "cultural": { "title": "Eventos Culturais", "desc": "Festivais, espetáculos, workshops e conferências" },
+      "corporate": { "title": "Eventos Corporativos", "desc": "Team buildings, convenções e atividades empresariais" }
+    },
+
+    "stats": {
+      "title": "Números que Falam por Si",
+      "events": "Eventos Realizados",
+      "participants": "Participantes",
+      "uptime": "Disponibilidade",
+      "support": "Suporte"
+    },
+
+    "cta": {
+      "title": "Pronto para o Próximo Nível?",
+      "desc": "Junte-se a centenas de organizadores que já confiam na Inscrix...",
+      "setup": "Setup em 5 minutos",
+      "secure": "Dados seguros",
+      "support": "Suporte dedicado"
+    }
+  },
+
+"terms": {
+    "title": "Termos e Condições",
+    "description": "Documento regulador de uso e responsabilidades da plataforma Inscrix.",
+    "last_update": "Última atualização: 28 de Agosto de 2024",
+    "version": "Versão 2.1",
+    "legal_notice": {
+      "title": "Aviso Legal",
+      "content": "Ao utilizar a plataforma Inscrix, está automaticamente a aceitar estes termos e condições. Recomendamos que leia atentamente todo o documento antes de usar os nossos serviços."
+    },
+    "sections": {
+      "definitions": {
+        "title": "1. Definições",
+        "description": "Para efeitos deste documento, entende-se por",
+        "content": {
+        "Inscrix": { "title": "Inscrix", "desc": "A plataforma digital e a empresa prestadora dos serviços" },
+        "Utilizador": { "title": "Utilizador", "desc": "Qualquer pessoa que aceda ou utilize a plataforma" },
+        "Organizador": { "title": "Organizador", "desc": "Utilizador que cria e gere eventos na plataforma" },
+        "Participante": { "title": "Participante", "desc": "Utilizador que se inscreve em eventos" },
+        "Evento": { "title": "Evento", "desc": "Qualquer atividade desportiva, cultural ou corporativa criada na plataforma" },
+        "Serviços": { "title": "Serviços", "desc": "Todas as funcionalidades oferecidas pela Inscrix" }
+        }
+      },
+      "acceptance": {
+        "title": "2. Aceitação dos Termos",
+        "content": {
+          "para1": "O acesso e utilização da plataforma Inscrix implica a aceitação integral e sem reservas destes Termos e Condições, bem como de todas as políticas e diretrizes da Inscrix.",
+          "para2": "Caso não concorde com algum dos termos apresentados, deve cessar imediatamente a utilização dos nossos serviços.",
+          "para3": "A Inscrix reserva-se o direito de alterar estes termos a qualquer momento, sendo as alterações comunicadas através da plataforma ou por email."
+        }
+      },
+      "services": {
+        "title": "3. Descrição dos Serviços",
+        "subtitle": "A Inscrix oferece:",
+        "desc": "A Inscrix esforça-se por manter os serviços sempre disponíveis, mas não garante disponibilidade contínua sem interrupções.",
+        "content": {
+          "services1": "Plataforma de criação e gestão de eventos desportivos e culturais;",
+          "services2": "Sistema de inscrições online com múltiplos métodos de pagamento;",
+          "services3": "Ferramentas de comunicação com participantes;",
+          "services4": "Sistema de cronometragem profissional;",
+          "services5": "Gestão de resultados e classificações;",
+          "services6": "Relatórios e estatísticas detalhadas;",
+          "services7": "Suporte técnico especializado.",
+          "services8": "A Inscrix esforça-se por manter os serviços sempre disponíveis, mas não garante disponibilidade contínua sem interrupções.",
+          "services9": "A Inscrix oferece:"
+        }
+      },
+      "user_account": {
+        "title": "4. Registo e Conta de Utilizador",
+        "para1": "4.1 Registo",
+        "content": {
+        "item1": "Para utilizar determinadas funcionalidades, é necessário criar uma conta fornecendo informações verdadeiras, precisas e atualizadas.",
+        "item2_title": "Responsabilidades do Utilizador:",
+        "item2_list": {
+            "bullet1": "Manter as credenciais de acesso seguras e confidenciais;",
+            "bullet2": "Notificar imediatamente qualquer uso não autorizado da conta;",
+            "bullet3": "Atualizar informações pessoais sempre que necessário;",
+            "bullet4": "Não partilhar a conta com terceiros."
+        },
+        "item3": "A Inscrix pode suspender ou encerrar contas que violem estes termos ou sejam utilizadas para atividades ilícitas."
+    }
+      },
+      "organizers": {
+        "title": "5. Obrigações dos Organizadores",
+        "intro": "Os organizadores comprometem-se a:",
+        "list1": "Fornecer informações precisas e completas sobre os eventos;",
+        "list2": "Cumprir todas as leis e regulamentos aplicáveis aos seus eventos;",
+        "list3": "Obter todas as licenças e autorizações necessárias;",
+        "list4": "Comunicar alterações importantes aos participantes;",
+        "list5": "Tratar os dados dos participantes com confidencialidade;",
+        "list6": "Reembolsar participantes de acordo com as políticas definidas;",
+        "list7": "Não criar eventos que violem direitos de terceiros;",
+        "list8": "Responsabilizar-se pela realização dos eventos criados."
+      },
+      "participants": {
+        "title": "6. Direitos e Obrigações dos Participantes",
+        "rightsTitle": "6.1 Direitos",
+        "rights": {
+          "list1": "Receber informações precisas sobre os eventos;",
+          "list2": "Participar nos eventos em que se inscreveu;",
+          "list3": "Reembolso conforme política do organizador;",
+          "list4": "Proteção dos dados pessoais."
+        },
+        "obligationsTitle": "6.2 Obrigações",
+        "obligations": {
+          "list1": "Fornecer informações verdadeiras na inscrição;",
+          "list2": "Cumprir regulamentos específicos de cada evento;",
+          "list3": "Efetuar pagamentos dentro dos prazos estabelecidos;",
+          "list4": "Comunicar desistências atempadamente."
+        }
+      },
+      "payments": {
+        "title": "7. Pagamentos e Reembolsos",
+        "paymentProcessingTitle": "7.1 Processamento de Pagamentos",
+        "paymentProcessingText": "Os pagamentos são processados através de fornecedores terceiros certificados. A Inscrix não armazena dados de cartão de crédito.",
+        "serviceFeesTitle": "7.2 Taxas de Serviço",
+        "serviceFeesText": "A Inscrix cobra uma taxa de serviço sobre as transações, claramente indicada antes da finalização do pagamento.",
+        "refundsTitle": "7.3 Reembolsos",
+        "refundsText": "Os reembolsos seguem a política definida pelo organizador de cada evento. A Inscrix não é responsável por políticas de reembolso dos organizadores."
+      },
+      "intellectual_property": {
+        "title": "8. Propriedade Intelectual",
+        "text1": "Todos os conteúdos da plataforma Inscrix, incluindo design, logótipos, textos, imagens e software, são propriedade da Inscrix ou dos seus licenciadores.",
+        "text2": "É proibida a reprodução, distribuição ou uso comercial destes conteúdos sem autorização expressa por escrito.",
+        "text3": "Os utilizadores concedem à Inscrix uma licença não exclusiva para utilizar conteúdos carregados na plataforma para fins de prestação de serviços."
+     },
+      "liability": {
+        "title": "9. Limitação de Responsabilidade",
+        "text1": "A Inscrix atua como intermediária entre organizadores e participantes. A responsabilidade pela realização dos eventos é exclusivamente dos organizadores.",
+        "text2": "A Inscrix não se responsabiliza por:",
+        "list1": "Cancelamento, adiamento ou alteração de eventos;",
+        "list2": "Lesões ou danos ocorridos durante os eventos;",
+        "list3": "Qualidade ou adequação dos eventos;",
+        "list4": "Perda de dados por falha técnica;",
+        "list5": "Danos indiretos ou consequenciais."
+      },
+      "law": {
+        "title": "10. Lei Aplicável e Foro",
+        "content": {
+          "text1": "Estes Termos e Condições regem-se pela lei portuguesa. Qualquer litígio será da competência dos tribunais portugueses.",
+          "text2": "Tentaremos sempre resolver disputas através de mediação antes de recorrer a procedimentos judiciais."
+        }
+      }
+    },
+    "contact": {
+      "title": "Dúvidas sobre estes termos?",
+      "description": "Entre em contacto connosco para esclarecimentos adicionais.",
+      "email": "legal@inscrix.pt",
+      "phone": "+351 220 123 456"
+    }
   }
 }
+
