@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Scale, FileText, Shield, AlertTriangle, Mail, Phone } from "lucide-react";
 
 const TermosCondicoes = () => {
+  const { t } = useTranslation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -18,14 +20,14 @@ const TermosCondicoes = () => {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-            Termos e Condições
+            {t("terms.title")}
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Documento regulador de uso e responsabilidades da plataforma Inscrix.
+           {t("terms.description")}
           </p>
           <div className="flex justify-center gap-4 mt-6">
-            <Badge variant="secondary">Última atualização: 28 de Agosto de 2024</Badge>
-            <Badge variant="outline">Versão 2.1</Badge>
+            <Badge variant="secondary">{t("terms.last_update")}</Badge>
+            <Badge variant="outline">{t("terms.version")}</Badge>
           </div>
         </div>
 
@@ -35,10 +37,9 @@ const TermosCondicoes = () => {
             <div className="flex items-start gap-4">
               <AlertTriangle className="h-6 w-6 text-orange-500 mt-1" />
               <div>
-                <h3 className="font-semibold text-orange-900 mb-2">Aviso Legal</h3>
+                <h3 className="font-semibold text-orange-900 mb-2">{t("terms.legal_notice.title")}</h3>
                 <p className="text-sm text-orange-800">
-                  Ao utilizar a plataforma Inscrix, está automaticamente a aceitar estes termos e condições. 
-                  Recomendamos que leia atentamente todo o documento antes de usar os nossos serviços.
+                  {t("terms.legal_notice.content")}
                 </p>
               </div>
             </div>
@@ -51,19 +52,19 @@ const TermosCondicoes = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <FileText className="h-5 w-5 text-primary" />
-                1. Definições
+                {t("terms.sections.definitions.title")}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h4 className="font-semibold mb-2">Para efeitos deste documento, entende-se por:</h4>
+                <h4 className="font-semibold mb-2">{t("terms.sections.definitions.description")}</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><strong>"Inscrix":</strong> A plataforma digital e a empresa prestadora dos serviços;</li>
-                  <li><strong>"Utilizador":</strong> Qualquer pessoa que aceda ou utilize a plataforma;</li>
-                  <li><strong>"Organizador":</strong> Utilizador que cria e gere eventos na plataforma;</li>
-                  <li><strong>"Participante":</strong> Utilizador que se inscreve em eventos;</li>
-                  <li><strong>"Evento":</strong> Qualquer atividade desportiva, cultural ou corporativa criada na plataforma;</li>
-                  <li><strong>"Serviços":</strong> Todas as funcionalidades oferecidas pela Inscrix.</li>
+                  <li><strong>{t("terms.sections.definitions.content.Inscrix.title")}</strong> {t("terms.sections.definitions.content.Inscrix.desc")}</li>
+                  <li><strong>{t("terms.sections.definitions.content.Utilizador.title")}</strong> {t("terms.sections.definitions.content.Utilizador.desc")}</li>
+                  <li><strong>{t("terms.sections.definitions.content.Organizador.title")}</strong> {t("terms.sections.definitions.content.Organizador.desc")}</li>
+                  <li><strong>{t("terms.sections.definitions.content.Participante.title")}</strong> {t("terms.sections.definitions.content.Participante.desc")}</li>
+                  <li><strong>{t("terms.sections.definitions.content.Evento.title")}</strong> {t("terms.sections.definitions.content.Evento.desc")}</li>
+                  <li><strong>{t("terms.sections.definitions.content.Serviços.title")}</strong> {t("terms.sections.definitions.content.Servicios.desc")}</li>
                 </ul>
               </div>
             </CardContent>
@@ -72,20 +73,17 @@ const TermosCondicoes = () => {
           {/* 2. Aceitação dos Termos */}
           <Card>
             <CardHeader>
-              <CardTitle>2. Aceitação dos Termos</CardTitle>
+              <CardTitle>{t("terms.sections.acceptance.title")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
               <p>
-                O acesso e utilização da plataforma Inscrix implica a aceitação integral e sem reservas 
-                destes Termos e Condições, bem como de todas as políticas e diretrizes da Inscrix.
+                {t("terms.sections.acceptance.content.para1")}
               </p>
               <p>
-                Caso não concorde com algum dos termos apresentados, deve cessar imediatamente 
-                a utilização dos nossos serviços.
+                {t("terms.sections.acceptance.content.para2")}
               </p>
               <p>
-                A Inscrix reserva-se o direito de alterar estes termos a qualquer momento, 
-                sendo as alterações comunicadas através da plataforma ou por email.
+                {t("terms.sections.acceptance.content.para3")}
               </p>
             </CardContent>
           </Card>
@@ -93,22 +91,21 @@ const TermosCondicoes = () => {
           {/* 3. Descrição dos Serviços */}
           <Card>
             <CardHeader>
-              <CardTitle>3. Descrição dos Serviços</CardTitle>
+              <CardTitle>{t("terms.sections.services.title")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
-              <h4 className="font-semibold text-foreground">A Inscrix oferece:</h4>
+              <h4 className="font-semibold text-foreground">{t("terms.sections.services.subtitle")}</h4>
               <ul className="space-y-2 list-disc list-inside">
-                <li>Plataforma de criação e gestão de eventos desportivos e culturais;</li>
-                <li>Sistema de inscrições online com múltiplos métodos de pagamento;</li>
-                <li>Ferramentas de comunicação com participantes;</li>
-                <li>Sistema de cronometragem profissional;</li>
-                <li>Gestão de resultados e classificações;</li>
-                <li>Relatórios e estatísticas detalhadas;</li>
-                <li>Suporte técnico especializado.</li>
+                <li>{t("terms.sections.services.content.services1")}</li>
+                <li>{t("terms.sections.services.content.services2")}</li>
+                <li>{t("terms.sections.services.content.services3")}</li>
+                <li>{t("terms.sections.services.content.services4")}</li>
+                <li>{t("terms.sections.services.content.services5")}</li>
+                <li>{t("terms.sections.services.content.services6")}</li>
+                <li>{t("terms.sections.services.content.services7")}</li>
               </ul>
               <p>
-                A Inscrix esforça-se por manter os serviços sempre disponíveis, mas não garante 
-                disponibilidade contínua sem interrupções.
+                {t("terms.sections.services.desc")}
               </p>
             </CardContent>
           </Card>
@@ -116,30 +113,28 @@ const TermosCondicoes = () => {
           {/* 4. Registo e Conta de Utilizador */}
           <Card>
             <CardHeader>
-              <CardTitle>4. Registo e Conta de Utilizador</CardTitle>
+              <CardTitle>{t("terms.sections.user_account.title")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
               <div>
-                <h4 className="font-semibold text-foreground mb-2">4.1 Registo</h4>
+                <h4 className="font-semibold text-foreground mb-2">{t("terms.sections.user_account.para1")}</h4>
                 <p>
-                  Para utilizar determinadas funcionalidades, é necessário criar uma conta fornecendo 
-                  informações verdadeiras, precisas e atualizadas.
+                  {t("terms.sections.user_account.content.item1")}
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-2">4.2 Responsabilidades do Utilizador</h4>
+                <h4 className="font-semibold text-foreground mb-2">4.2 {t("terms.sections.user_account.content.item2_title")}</h4>
                 <ul className="space-y-1 list-disc list-inside">
-                  <li>Manter as credenciais de acesso seguras e confidenciais;</li>
-                  <li>Notificar imediatamente qualquer uso não autorizado da conta;</li>
-                  <li>Atualizar informações pessoais sempre que necessário;</li>
-                  <li>Não partilhar a conta com terceiros.</li>
+                  <li>{t("terms.sections.user_account.content.item2_list.bullet1")}</li>
+                  <li>{t("terms.sections.user_account.content.item2_list.bullet2")}</li>
+                  <li>{t("terms.sections.user_account.content.item2_list.bullet3")}</li>
+                  <li>{t("terms.sections.user_account.content.item2_list.bullet4")}</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-2">4.3 Suspensão de Conta</h4>
+                <h4 className="font-semibold text-foreground mb-2">{t("terms.sections.user_account.para2")}</h4>
                 <p>
-                  A Inscrix pode suspender ou encerrar contas que violem estes termos ou 
-                  sejam utilizadas para atividades ilícitas.
+                  {t("terms.sections.user_account.content.item3")}
                 </p>
               </div>
             </CardContent>
@@ -148,19 +143,19 @@ const TermosCondicoes = () => {
           {/* 5. Obrigações dos Organizadores */}
           <Card>
             <CardHeader>
-              <CardTitle>5. Obrigações dos Organizadores</CardTitle>
+              <CardTitle>{t("terms.sections.organizers.title")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
-              <h4 className="font-semibold text-foreground">Os organizadores comprometem-se a:</h4>
+              <h4 className="font-semibold text-foreground">{t("terms.sections.organizers.intro")}</h4>
               <ul className="space-y-2 list-disc list-inside">
-                <li>Fornecer informações precisas e completas sobre os eventos;</li>
-                <li>Cumprir todas as leis e regulamentos aplicáveis aos seus eventos;</li>
-                <li>Obter todas as licenças e autorizações necessárias;</li>
-                <li>Comunicar alterações importantes aos participantes;</li>
-                <li>Tratar os dados dos participantes com confidencialidade;</li>
-                <li>Reembolsar participantes de acordo com as políticas definidas;</li>
-                <li>Não criar eventos que violem direitos de terceiros;</li>
-                <li>Responsabilizar-se pela realização dos eventos criados.</li>
+                <li>{t("terms.sections.organizers.list1")}</li>
+                <li>{t("terms.sections.organizers.list2")}</li>
+                <li>{t("terms.sections.organizers.list3")}</li>
+                <li>{t("terms.sections.organizers.list4")}</li>
+                <li>{t("terms.sections.organizers.list5")}</li>
+                <li>{t("terms.sections.organizers.list6")}</li>
+                <li>{t("terms.sections.organizers.list7")}</li>
+                <li>{t("terms.sections.organizers.list8")}</li>
               </ul>
             </CardContent>
           </Card>
@@ -168,25 +163,25 @@ const TermosCondicoes = () => {
           {/* 6. Direitos e Obrigações dos Participantes */}
           <Card>
             <CardHeader>
-              <CardTitle>6. Direitos e Obrigações dos Participantes</CardTitle>
+              <CardTitle>{t("terms.sections.participants.title")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
               <div>
-                <h4 className="font-semibold text-foreground mb-2">6.1 Direitos</h4>
+                <h4 className="font-semibold text-foreground mb-2">{t("terms.sections.participants.rightsTitle")}</h4>
                 <ul className="space-y-1 list-disc list-inside">
-                  <li>Receber informações precisas sobre os eventos;</li>
-                  <li>Participar nos eventos em que se inscreveu;</li>
-                  <li>Reembolso conforme política do organizador;</li>
-                  <li>Proteção dos dados pessoais.</li>
+                  <li>{t("terms.sections.participants.rights.list1")}</li>
+                  <li>{t("terms.sections.participants.rights.list2")}</li>
+                  <li>{t("terms.sections.participants.rights.list3")}</li>
+                  <li>{t("terms.sections.participants.rights.list4")}</li>
                 </ul>
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-2">6.2 Obrigações</h4>
+                <h4 className="font-semibold text-foreground mb-2">{t("terms.sections.participants.obligationsTitle")}</h4>
                 <ul className="space-y-1 list-disc list-inside">
-                  <li>Fornecer informações verdadeiras na inscrição;</li>
-                  <li>Cumprir regulamentos específicos de cada evento;</li>
-                  <li>Efetuar pagamentos dentro dos prazos estabelecidos;</li>
-                  <li>Comunicar desistências atempadamente.</li>
+                  <li>{t("terms.sections.participants.obligations.list1")}</li>
+                  <li>{t("terms.sections.participants.obligations.list2")}</li>
+                  <li>{t("terms.sections.participants.obligations.list3")}</li>
+                  <li>{t("terms.sections.participants.obligations.list4")}</li>
                 </ul>
               </div>
             </CardContent>
@@ -197,29 +192,26 @@ const TermosCondicoes = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Scale className="h-5 w-5 text-primary" />
-                7. Pagamentos e Reembolsos
+                {t("terms.sections.payments.title")}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
               <div>
-                <h4 className="font-semibold text-foreground mb-2">7.1 Processamento de Pagamentos</h4>
+                <h4 className="font-semibold text-foreground mb-2">{t("terms.sections.payments.paymentProcessingTitle")}</h4>
                 <p>
-                  Os pagamentos são processados através de fornecedores terceiros certificados. 
-                  A Inscrix não armazena dados de cartão de crédito.
+                  {t("terms.sections.payments.paymentProcessingText")}
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-2">7.2 Taxas de Serviço</h4>
+                <h4 className="font-semibold text-foreground mb-2">{t("terms.sections.payments.serviceFeesTitle")}</h4>
                 <p>
-                  A Inscrix cobra uma taxa de serviço sobre as transações, claramente indicada 
-                  antes da finalização do pagamento.
+                  {t("terms.sections.payments.paymentProcessingText")}
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold text-foreground mb-2">7.3 Reembolsos</h4>
+                <h4 className="font-semibold text-foreground mb-2">{t("terms.sections.payments.refundsTitle")}</h4>
                 <p>
-                  Os reembolsos seguem a política definida pelo organizador de cada evento. 
-                  A Inscrix não é responsável por políticas de reembolso dos organizadores.
+                  {t("terms.sections.payments.refundsText")}
                 </p>
               </div>
             </CardContent>
@@ -228,20 +220,17 @@ const TermosCondicoes = () => {
           {/* 8. Propriedade Intelectual */}
           <Card>
             <CardHeader>
-              <CardTitle>8. Propriedade Intelectual</CardTitle>
+              <CardTitle>{t("terms.sections.intellectual_property.title")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
               <p>
-                Todos os conteúdos da plataforma Inscrix, incluindo design, logótipos, textos, 
-                imagens e software, são propriedade da Inscrix ou dos seus licenciadores.
+                {t("terms.sections.intellectual_property.text1")}
               </p>
               <p>
-                É proibida a reprodução, distribuição ou uso comercial destes conteúdos sem 
-                autorização expressa por escrito.
+                {t("terms.sections.intellectual_property.text2")}
               </p>
               <p>
-                Os utilizadores concedem à Inscrix uma licença não exclusiva para utilizar 
-                conteúdos carregados na plataforma para fins de prestação de serviços.
+                {t("terms.sections.intellectual_property.text3")}
               </p>
             </CardContent>
           </Card>
@@ -251,23 +240,22 @@ const TermosCondicoes = () => {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Shield className="h-5 w-5 text-primary" />
-                9. Limitação de Responsabilidade
+                {t("terms.sections.liability.title")}
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
               <p>
-                A Inscrix atua como intermediária entre organizadores e participantes. 
-                A responsabilidade pela realização dos eventos é exclusivamente dos organizadores.
+                {t("terms.sections.liability.text1")}
               </p>
               <p>
-                A Inscrix não se responsabiliza por:
+                {t("terms.sections.liability.text2")}
               </p>
               <ul className="space-y-1 list-disc list-inside">
-                <li>Cancelamento, adiamento ou alteração de eventos;</li>
-                <li>Lesões ou danos ocorridos durante os eventos;</li>
-                <li>Qualidade ou adequação dos eventos;</li>
-                <li>Perda de dados por falha técnica;</li>
-                <li>Danos indiretos ou consequenciais.</li>
+                <li>{t("terms.sections.liability.list1")}</li>
+                <li>{t("terms.sections.liability.list2")}</li>
+                <li>{t("terms.sections.liability.list3")}</li>
+                <li>{t("terms.sections.liability.list4")}</li>
+                <li>{t("terms.sections.liability.list5")}</li>
               </ul>
             </CardContent>
           </Card>
@@ -275,16 +263,14 @@ const TermosCondicoes = () => {
           {/* 10. Lei Aplicável */}
           <Card>
             <CardHeader>
-              <CardTitle>10. Lei Aplicável e Foro</CardTitle>
+              <CardTitle>{t("terms.sections.law.title")}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4 text-sm text-muted-foreground">
               <p>
-                Estes Termos e Condições regem-se pela lei portuguesa. 
-                Qualquer litígio será da competência dos tribunais portugueses.
+                {t("terms.sections.law.content.text1")}
               </p>
               <p>
-                Tentaremos sempre resolver disputas através de mediação antes 
-                de recorrer a procedimentos judiciais.
+                {t("terms.sections.law.content.text2")}
               </p>
             </CardContent>
           </Card>
@@ -293,19 +279,19 @@ const TermosCondicoes = () => {
           <Card className="border-primary/20 bg-primary/5">
             <CardContent className="pt-6">
               <div className="text-center">
-                <h3 className="font-semibold mb-2">Dúvidas sobre estes termos?</h3>
+                <h3 className="font-semibold mb-2">{t("terms.contact.title")}</h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Entre em contacto connosco para esclarecimentos adicionais.
+                  {t("terms.contact.description")}
                 </p>
                 <div className="flex justify-center gap-4 text-sm">
                   <Badge variant="secondary">
                     <Mail className="h-3 w-3 mr-1" />
-                    legal@inscrix.pt
+                    {t("terms.contact.email")}
                   </Badge>
                   <Badge variant="secondary">
                     <div className="flex items-center gap-2">
                       <Phone className="h-3 w-3 text-muted-foreground" />
-                      <span>+351 220 123 456</span>
+                      <span>{t("terms.contact.phone")}</span>
                     </div>
                   </Badge>
                 </div>
