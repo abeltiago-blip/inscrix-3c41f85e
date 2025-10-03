@@ -70,10 +70,10 @@ const Header = () => {
             <Link to="/eventos">{t('navigation.events')}</Link>
           </Button>
           <Button asChild variant="ghost" className="text-xs font-medium">
-            <Link to="/categorias">O que Procuras?</Link>
+            <Link to="/categorias">{t('navigation.categorias')}</Link>
           </Button>
           <Button asChild variant="ghost" className="text-xs font-medium">
-            <Link to="/localizacao">Onde?</Link>
+            <Link to="/localizacao">{t('navigation.localization')}</Link>
           </Button>
         </nav>
 
@@ -125,7 +125,7 @@ const Header = () => {
                 <DropdownMenuItem asChild>
                   <Link to="/settings" className="flex items-center">
                     <Settings className="mr-2 h-4 w-4" />
-                    Configurações
+                    {t("navigation.settings")}
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -166,8 +166,8 @@ const Header = () => {
                       className="h-8 w-auto"
                     />
                     <div>
-                      <h2 className="font-semibold text-lg">INSCRIX</h2>
-                      <p className="text-xs text-muted-foreground">Gestão de Eventos</p>
+                      <h2 className="font-semibold text-lg">{t('settings.nmcompany')}</h2>
+                      <p className="text-xs text-muted-foreground">{t('settings.peventmanage')}</p>
                     </div>
                   </div>
                 </div>
@@ -189,7 +189,7 @@ const Header = () => {
                         <Button asChild size="sm" variant="outline" className="flex-1">
                           <Link to={getDashboardLink()}>
                             <BarChart3 className="mr-2 h-4 w-4" />
-                            Dashboard
+                            {t('navigation.dashboard')}
                           </Link>
                         </Button>
                         <Button asChild size="sm" variant="outline">
@@ -201,7 +201,7 @@ const Header = () => {
                     </div>
                   ) : (
                     <div className="space-y-3">
-                      <p className="text-sm text-muted-foreground">Acede à tua conta</p>
+                      <p className="text-sm text-muted-foreground">{t("auth.loginto")}</p>
                       <Button asChild className="w-full">
                         <Link to="/login">
                           <User className="mr-2 h-4 w-4" />
@@ -216,14 +216,14 @@ const Header = () => {
                 <div className="flex-1 p-6 space-y-6">
                   {/* Quick Actions */}
                   <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">Ações Rápidas</h3>
+                    <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">{t('sidebar.quickActions.title')}</h3>
                     <div className="space-y-1">
                       <Button asChild variant="ghost" className="w-full justify-start h-12">
                         <Link to="/create-event">
                           <Plus className="mr-3 h-5 w-5 text-primary" />
                           <div className="text-left">
                             <div className="font-medium">{t('events.createEvent')}</div>
-                            <div className="text-xs text-muted-foreground">Organiza o teu evento</div>
+                            <div className="text-xs text-muted-foreground">{t('sidebar.quickActions.createEvent.description')}</div>
                           </div>
                         </Link>
                       </Button>
@@ -232,7 +232,7 @@ const Header = () => {
                           <ShoppingCart className="mr-3 h-5 w-5 text-primary" />
                           <div className="text-left flex-1">
                             <div className="font-medium">{t('navigation.cart')}</div>
-                            <div className="text-xs text-muted-foreground">Ver carrinho</div>
+                            <div className="text-xs text-muted-foreground">{t('sidebar.quickActions.cart.description')}</div>
                           </div>
                           {getItemCount() > 0 && (
                             <Badge 
@@ -251,14 +251,14 @@ const Header = () => {
 
                   {/* Main Navigation */}
                   <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">Explorar</h3>
+                    <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wide">{t('sidebar.explore.title')}</h3>
                     <div className="space-y-1">
                       <Button asChild variant="ghost" className="w-full justify-start h-12">
                         <Link to="/eventos">
                           <Calendar className="mr-3 h-5 w-5 text-primary" />
                           <div className="text-left">
-                            <div className="font-medium">{t('navigation.events')}</div>
-                            <div className="text-xs text-muted-foreground">Todos os eventos</div>
+                            <div className="font-medium">{t('sidebar.explore.events.label')}</div>
+                            <div className="text-xs text-muted-foreground">{t('sidebar.explore.events.description')}</div>
                           </div>
                         </Link>
                       </Button>
@@ -266,8 +266,8 @@ const Header = () => {
                         <Link to="/categorias">
                           <Tag className="mr-3 h-5 w-5 text-primary" />
                           <div className="text-left">
-                            <div className="font-medium">O que Procuras?</div>
-                            <div className="text-xs text-muted-foreground">Categorias de eventos</div>
+                            <div className="font-medium">{t('sidebar.explore.categories.label')}</div>
+                            <div className="text-xs text-muted-foreground">{t('sidebar.explore.categories.description')}</div>
                           </div>
                         </Link>
                       </Button>
@@ -275,8 +275,8 @@ const Header = () => {
                         <Link to="/localizacao">
                           <MapPin className="mr-3 h-5 w-5 text-primary" />
                           <div className="text-left">
-                            <div className="font-medium">Onde?</div>
-                            <div className="text-xs text-muted-foreground">Localização</div>
+                            <div className="font-medium">{t('sidebar.explore.location.label')}</div>
+                            <div className="text-xs text-muted-foreground">{t('sidebar.explore.location.description')}</div>
                           </div>
                         </Link>
                       </Button>
@@ -284,8 +284,8 @@ const Header = () => {
                         <Link to="/manual">
                           <BookOpen className="mr-3 h-5 w-5 text-primary" />
                           <div className="text-left">
-                            <div className="font-medium">Manual</div>
-                            <div className="text-xs text-muted-foreground">Guia da plataforma</div>
+                            <div className="font-medium">{t('sidebar.explore.manual.label')}</div>
+                            <div className="text-xs text-muted-foreground">{t('sidebar.explore.manual.description')}</div>
                           </div>
                         </Link>
                       </Button>
