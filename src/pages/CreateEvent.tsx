@@ -458,7 +458,7 @@ export default function CreateEvent() {
                       <span className="text-primary block">Extraordinários</span>
                     </h1>
                     <p className="text-xl text-muted-foreground">
-                      hello anjali Torne-se um organizador Inscrix e aceda a ferramentas profissionais para criar, gerir e promover os seus eventos desportivos e culturais.
+                   Torne-se um organizador Inscrix e aceda a ferramentas profissionais para criar, gerir e promover os seus eventos desportivos e culturais.
                     </p>
                   </div>
                   
